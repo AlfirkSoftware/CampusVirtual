@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="icon" href="../images/IPEV.jpg">
-        <title> RR. HH. | Inicio de Sesión</title>
+        <title> Campús Virtual | Inicio de Sesión</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <?php include_once 'estilos.view.php'; ?>
     </head>

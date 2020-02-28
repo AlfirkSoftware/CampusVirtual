@@ -96,13 +96,13 @@ class Sesion extends Conexion {
                         menu m
                         inner join menu_item_accesos a on ( m.codigo_menu = a.codigo_menu )
                 where
-                        a.codigo_cargo = :p_codigo_cargo
+                        a.cargo_id = :p_cargo_id
                         and a.acceso = '1'
                 order by
                         1
                 ";
             $sentencia = $this->dblink->prepare($sql);
-            $sentencia->bindParam(":p_codigo_cargo", $codigoCargo);
+            $sentencia->bindParam(":p_cargo_id", $codigoCargo);
             $sentencia->execute();
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             return $resultado;
@@ -127,7 +127,7 @@ public function obtenerOpcionesMenuItem($codigoCargo, $codigoMenu) {
                             )
 
                     where
-                            a.codigo_cargo = :p_codigo_cargo
+                            a.cargo_id = :p_cargo_id
                             and a.codigo_menu = :p_codigo_menu
                             and a.acceso = '1'
                     order by
@@ -136,7 +136,7 @@ public function obtenerOpcionesMenuItem($codigoCargo, $codigoMenu) {
             
 //            $sentencia = $this->dbLink->prepare($sql);
             $sentencia = $this->dblink->prepare($sql);
-            $sentencia->bindParam(":p_codigo_cargo", $codigoCargo);
+            $sentencia->bindParam(":p_cargo_id", $codigoCargo);
             $sentencia->bindParam(":p_codigo_menu", $codigoMenu);
             $sentencia->execute();
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);

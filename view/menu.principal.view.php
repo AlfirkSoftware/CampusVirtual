@@ -10,14 +10,14 @@ require_once '../controller/perfil.usuario.leer.datos.controller.php';
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="icon" href="../images/logo vicsac_completo.png">
-        <title> RR. HH. | Inicio</title>
+        <link rel="icon" href="../images/IPEV.jpg">
+        <title> Campus Virtual | Inicio</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <?php include_once 'estilos.view.php'; ?>
     </head>
 
-    <body class="hold-transition skin-yellow sidebar-mini">
+    <body class="hold-transition skin-purple-light sidebar-mini">
         <!-- Site wrapper -->
         <div class="wrapper">
 
@@ -43,8 +43,8 @@ require_once '../controller/perfil.usuario.leer.datos.controller.php';
                               <!-- title row -->
                               <div class="row">
                                 <div class="col-xs-12">
-                                  <h2 class="page-header">
-                                    <i class="fa fa-bullhorn"></i> Anuncios.
+                                  <h2 class="page-header text-primary text-bold">
+                                    <i class="fa fa-bullhorn"></i> Anuncios
                                     <small class="pull-right">Fecha: <?php echo date('d/m/yy'); ?></small>
                                   </h2>
                                 </div>
