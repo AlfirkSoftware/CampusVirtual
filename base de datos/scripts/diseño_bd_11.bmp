@@ -1,0 +1,24 @@
+﻿SELECT 
+  * 
+FROM 
+  public.candidato, 
+  public.estudio_candidato, 
+  public.disposicion_laboral, 
+  public.experiencia_laboral, 
+  public.puesto_laboral, 
+  public.formacion_deseable, 
+  public.experiencia_requerida, 
+  public.usuario, 
+  public.convocatoria, 
+  public.cronograma, 
+  public.etapa
+WHERE 
+  candidato.doc_id = estudio_candidato.doc_id AND
+  candidato.doc_id = experiencia_laboral.doc_id AND
+  candidato.doc_id = usuario.doc_id AND
+  disposicion_laboral.disposicion_laboral_id = candidato.disposicion_laboral_id AND
+  puesto_laboral.codigo_puesto_laboral = experiencia_requerida.codigo_puesto_laboral AND
+  formacion_deseable.codigo_formacion_deseable = puesto_laboral.codigo_formacion_deseable AND
+  convocatoria.codigo_convocatoria = puesto_laboral.codigo_convocatoria AND
+  convocatoria.codigo_convocatoria = cronograma.codigo_convocatoria AND
+  etapa.codigo_etapa = cronograma.codigo_etapa;
