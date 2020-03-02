@@ -28,7 +28,10 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MENÚ PRINCIPAL</li>
+            <li class="header">
+                <h4 class="text-primary text-bold">
+                Menú Principal
+            </li>
                 <?php
                 /* Crear la variable POST para enviarle al controlador */
                 $_POST["codigo_cargo_usuario"] = $s_codigoCargo; // $s_codigoCargo = 1 o 2
@@ -41,8 +44,8 @@
                 for ($i = 0; $i < count($resultadoOpcionesMenuBD); $i++) {
                     echo '<li class="treeview">';
                     echo '<a href="#">';
-                    echo '<i class="fa fa-laptop"></i>';
-                    echo '<span>' . $resultadoOpcionesMenuBD[$i]["nombre"] . '</span>';
+                    echo '<i class="fa fa-check-square-o"></i>';
+                    echo '<span class="text-primary text-bold">' . $resultadoOpcionesMenuBD[$i]["nombre"] . '</span>';
                     echo '<span class="pull-right-container">';
                     echo '<i class="fa fa-angle-left pull-right"></i>';
                     echo '</span>';

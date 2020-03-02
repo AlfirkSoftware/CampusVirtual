@@ -19,7 +19,7 @@ require_once '../controller/perfil.usuario.leer.datos.controller.php';
 
     <body class="hold-transition skin-purple-light sidebar-mini">
         <!-- Site wrapper -->
-        <div class="">
+        <div class="wrapper">
 
             <?php include_once './menu-arriba.admin.view.php'; ?>
 
