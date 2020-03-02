@@ -53,8 +53,6 @@
 
                     /* Mostrar los items a los que tiene acceso el usuario */
                     echo '<ul class="treeview-menu">';
-
-
                     /* Crear la variable POST para enviarle al controlador */
                     $_POST["codigo_menu"] = $resultadoOpcionesMenuBD[$i]["codigo_menu"];
 //                    echo $_POST["codigo_menu"];
@@ -63,7 +61,7 @@
                     require '../controller/obtener.opciones.menu.item.controller.php';
 
                     for ($j = 0; $j < count($resultadoOpcionesMenuItemBD); $j++) {
-                        echo '<li><a href="' . $resultadoOpcionesMenuItemBD[$j]["archivo"] . '"><i class="fa fa-circle-o"></i> ' . $resultadoOpcionesMenuItemBD[$j]["nombre"] . '</a></li>';
+                        echo '<li><a href="' . $resultadoOpcionesMenuItemBD[$j]["archivo"] . '"><i class="fa fa-circle-o"></i><span class="text-primary" style="font-size: 12px"> ' . $resultadoOpcionesMenuItemBD[$j]["nombre"] . '</span></a></li>';
                     }
                     echo '</ul>';
                     /* Mostrar los items a los que tiene acceso el usuario */

@@ -1,8 +1,15 @@
 <header class="main-header">    
     <a href="menu.principal.view.php"class="logo">      
-      <span class="logo-lg"><b><img src="../images/IPEV2.png" class="img-responsive center-block">   </span>
+      <span class="logo-lg"><b><img src="../images/logo_blanco_IPEV.png" class="img-responsive center-block">   </span>
     </a>
     <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="dropdown messages-menu">

@@ -56,15 +56,15 @@ require_once '../controller/perfil.usuario.leer.datos.controller.php';
                                             <div class="x_title">
                                                 <header class="text-center">      
                                                     <label>
-                                                        <img src="../images/evento1.png" class="img-container">
+                                                        <img src="../images/evento1.png" class="img-thumbnail" alt="Responsive image">
                                                     </label>
                                                     <br/><br/>
                                                     <label>
-                                                        <img src="../images/evento2.jpg" class="img-container">
+                                                        <img src="../images/evento2.jpg" class="img-thumbnail" alt="Responsive image">
                                                     </label>
                                                     <br/><br/>
                                                     <label>
-                                                        <img src="../images/evento3.jpg" class="img-container">
+                                                        <img src="../images/evento3.jpg" class="img-thumbnail" alt="Responsive image">
                                                     </label>
                                                 </header>
                                                 <br/>
@@ -91,7 +91,7 @@ require_once '../controller/perfil.usuario.leer.datos.controller.php';
                                             <div class="x_title">
                                                 <header class="text-center">      
                                                     <label>
-                                                        <img src="../images/bienvenido_admin.png" class="img-container">
+                                                        <img src="../images/bienvenido_admin.png" class="img-thumbnail">
                                                     </label>
                                                 </header>
                                                 <br/>
