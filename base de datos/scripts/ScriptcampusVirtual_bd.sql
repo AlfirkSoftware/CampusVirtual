@@ -142,7 +142,221 @@ CREATE TABLE correlativo
 	CONSTRAINT pk_correlativo PRIMARY KEY (tabla)
  );
  
- -- Registro
+ select * from menu
+ 
+ -- Registros
+ -- Menú
+insert into menu(codigo_menu,nombre)
+values(1,'Inicio'); 
+insert into menu(codigo_menu,nombre)
+values(2,'Anuncio'); 
+insert into menu(codigo_menu,nombre)
+values(3,'Usuario');
+insert into menu(codigo_menu,nombre)
+values(4,'Perfil'); 
+insert into menu(codigo_menu,nombre)
+values(5,'Campus Virtual'); 
+insert into menu(codigo_menu,nombre)
+values(6,'Simulador'); 
+
+select * from cargo
+--  Menú item acceso
+select * from cargo
+-- Director General
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,1,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,2,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,3,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(2,4,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,5,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,6,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,7,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,8,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,9,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,10,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,11,1,2); 
+
+select * from menu_item_accesos
+-- Gerente general
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,1,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,2,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,3,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(2,4,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,5,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,6,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,7,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,8,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,9,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,10,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,11,2,1); 
+
+-- Coordinadora Académica
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,1,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,2,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,3,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(2,4,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,5,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,6,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,7,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,8,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,9,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,10,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,11,3,1); 
+
+-- Analista Programador
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,1,4,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,2,4,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,3,4,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(2,4,4,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,5,4,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,6,4,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,7,4,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,8,4,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,9,4,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,10,4,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,11,4,1); 
+
+-- Docente
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,1,5,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,2,5,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,3,5,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(2,4,5,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,5,5,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,6,5,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,7,5,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,8,5,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,9,5,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,10,5,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,11,5,1); 
+
+-- Estudiante
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,1,6,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,2,6,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(1,3,6,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(2,4,6,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,5,6,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(3,6,6,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,7,6,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(4,8,6,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,9,6,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(5,10,6,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,11,6,1); 
+
+--  Menú item
+select * from menu_item
+
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(1,1,'Inicio', 'menu.principal.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(1,2,'Eventos', 'eventos.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(1,3,'Noticias', 'noticias.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(2,4,'Gestionar Anuncios', 'gestionarAnuncios.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(3,5,'Gestionar Usuario', 'gestionarUsuario.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(3,6,'Reporte Simulador', 'reporteSimulador.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(4,7,'Datos Personales', 'datosPersonales.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(4,8,'Perfil', 'perfil.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(5,9,'Gestionar Curso', 'gestionarCurso.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(5,10,'Gestionar Archivo', 'gestionarArchivos.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(6,11,'Simulador', 'pruebaSimulador.view.php'); 
+
+
+ -- Correlativo
+insert into correlativo(tabla, numero)
+values('usuario',0);
+insert into correlativo(tabla, numero)
+values('cargo',0);
+insert into correlativo(tabla, numero)
+values('menu',0);
+insert into correlativo(tabla, numero)
+values('menu_item',0);
+insert into correlativo(tabla, numero)
+values('menu_item_accesos',0);
+insert into correlativo(tabla, numero)
+values('credenciales_acceso',0);
+
+insert into correlativo(tabla, numero)
+values('curso',0);
+insert into correlativo(tabla, numero)
+values('prueba',0);
+insert into correlativo(tabla, numero)
+values('pregunta',0);
+
+select * from correlativo
+
 -- Rol
 select * from usuario
 
@@ -154,6 +368,10 @@ insert into cargo(cargo_id, descripcion)
 values(3,'Coordinadora académica');
 insert into cargo(cargo_id, descripcion)
 values(4,'Analista Programador');
+insert into cargo(cargo_id, descripcion)
+values(5,'Docente');
+insert into cargo(cargo_id, descripcion)
+values(6,'Estudiante');
 -- Usuario
 insert into usuario(doc_id,nombres,apellidos,direccion,telefono,sexo,edad,email,cargo_id)
 values('00000000','Juan','Benito casas','Av. Guardia Civil, urb. Proceres #4456. Surco','996456547','M','28', 'juanBenito@hotmail.com',1);
@@ -180,93 +398,4 @@ select MD5('123')
 
 select * from credenciales_acceso
 
-select 
-                            u.doc_ID,
-                            u.nombres,
-                            u.apellidos,
-                            u.direccion,
-                            u.telefono,
-                            u.sexo,
-                            u.edad,
-                            r.clave,							
-                            r.estado,
-                            r.codigo_usuario,							
-                            c.descripcion as cargo,
-                            c.cargo_id
-                    from
-                            cargo c inner join usuario u 
-                    on 
-                            (c.doc_id = u.doc_id) inner join credenciales_acceso r
-					
-                    where
-                            u.email = 'juanBenito@hotmail.com' 
-    
-	
-	
-	select 
-                            u.doc_id,
-                            u.nombres,
-                            u.apellidos,
-                            u.direccion,
-                            u.telefono,
-                            u.sexo,
-                            u.edad,
-                            r.clave,                            
-                            r.estado,
-                            r.codigo_usuario,                           
-                            c.descripcion as cargo,
-                            c.cargo_id
-                    from
-                            cargo c inner join usuario u 
-                    on 
-                            (c.cargo_id = u.cargo_id) inner join credenciales_acceso r
-                    on
-                            (r.doc_id = u.doc_id)
-                    where
-                            u.email = 'juanBenito@hotmail.com'  
-							
-							select
-								u.doc_ID,
-								u.nombres,
-								u.apellidos,
-								u.direccion,
-								u.telefono,
-								u.sexo,
-								u.edad,                          
-								c.descripcion
-							from 
-								usuario u inner join cargo c
-							on	
-								(u.cargo_id = c.cargo_id)
-							where
-								u.doc_id = '00000000'
-								
-								
-								
-								
-								
-								
-								
-select 
-                            u.doc_id,
-                            u.nombres,
-                            u.apellidos,
-                            u.direccion,
-                            u.telefono,
-                            u.sexo,
-                            u.edad,
-                            r.clave,                            
-                            r.estado,
-                            r.codigo_usuario,                           
-                            c.descripcion as cargo,
-                            c.cargo_id
-                    from
-                            cargo c inner join usuario u 
-                    on 
-                            (c.cargo_id = u.cargo_id) inner join credenciales_acceso r
-                    on
-                            (r.doc_id = u.doc_id)
-                    where
-                            u.email = :p_email 
-								
-
+select * from usuario
