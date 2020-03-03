@@ -52,7 +52,7 @@
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-bullhorn"></i> Agregar nuevo usuario</button>
                                 </section>
                                 <div class="box-body">
-                                    <div id="listado" class="table-responsive"></div>
+                                    <div id="listado" class="table table-responsive"></div>
                                 </div>
                             </div>
                         </div>
