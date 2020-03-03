@@ -72,40 +72,180 @@
                                                 <div class="col-xs-3">
                                                     <p>
                                                         <input type="hidden" value="" id="txtTipoOperacion" name="txtTipoOperacion">
-                                                        Código <input type="text" 
+                                                        Código<input type="text" 
                                                                       name="txtCodigo" 
                                                                       id="txtCodigo" 
-                                                                      class="form-control input-sm text-bold" 
-                                                                      readonly="">
+                                                                      class="form-control input-sm"
+                                                                      readonly="true">
                                                     </p>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-8">
+                                                <div class="col-xs-3">
                                                     <p>
-                                                        Nombre de la Convocatoria <textarea type="text" 
-                                                                                            name="txtNombreConvocatoria" 
-                                                                                            id="txtNombreConvocatoria" 
-                                                                                            rows="5"
-                                                                                            required=""
-                                                                                            class="form-control input-sm text-bold"></textarea>
+                                                        Doc. Identidad (*) <input type="text" class="form-control" 
+                                                                       id="txtDoc_identidad" name="txtDoc_identidad" 
+                                                                       required="" autofocus="" 
+                                                                       maxlength="8"
+                                                                       onkeypress="ValidaSoloNumeros();">
                                                     </p>
                                                 </div>
-                                                <div class="col-xs-4">
+                                                <div class="col-xs-3">
                                                     <p>
-                                                        Estado
-                                                        <select required="" name="txtEstado" id="txtEstado" class="form-control input-sm">
-                                                            <option>-</option>
-                                                            <option value="VIGENTE">VIGENTE</option>
-                                                            <option value="CONCLUIDO">CONCLUIDO</option>
-                                                            <option value="NO PUBLICADO">NO PUBLICADO</option>
+                                                        Cargo (*)
+                                                        <select size="1" id="cargo" name="cargo" class="form-control has-feedback-left" required> 
+                                                            <option></option>
+                                                            <option value="1">Director</option>
+                                                            <option value="2">Gerente</option>
+                                                            <option value="3">Coordinadora</option>
+                                                            <option value="4">Programador</option>
+                                                            <option value="5">Docente</option>
+                                                            <option value="6">Estudiante</option>
+                                                        </select>
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-3">
+                                                    <p>
+                                                        Rol (*)
+                                                        <select size="1" id="tipo" name="tipo" class="form-control has-feedback-left" required> 
+                                                            <option></option>
+                                                            <option value="A">Admin</option>
+                                                            <option value="D">Docente</option>
+                                                            <option value="E">Estudiante</option>
                                                         </select>
                                                     </p>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <p>
+                                                        Nombres (*)
+                                                        <input type="text" class="form-control" id="txtNombre" name="txtNombre" required="" autofocus="">
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <p>
+                                                        Apellidos (*)
+                                                        <input type="text" class="form-control" id="txtApellidos" name="txtApellidos" required="">
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <p>
+                                                        Dirección (*)
+                                                        <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" required="">
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <p>
+                                                        Email (*)
+                                                        <input type="email" id="txtEmail" class="form-control" name="txtEmail" required="" onChange="javascript:document.getElementById('cuenta').value = this.value;">
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-3">
+                                                    <p>
+                                                        Teléfono (*)
+                                                        <input type="text" id="txtTelefono" class="form-control" name="txtTelefono" required="" maxlength="20" onkeypress="ValidaSoloNumeros();">
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-3">
+                                                    <p>
+                                                        Sexo (*)
+                                                        <select size="1" id="sexo" name="sexo" class="form-control has-feedback-left" required> 
+                                                            <option></option>
+                                                            <option value="H">Hombre</option>
+                                                            <option value="M">Mujer</option>
+                                                        </select>
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-2">
+                                                    <p>
+                                                        Edad (*)
+                                                        <select size="1" id="edad" name="edad" class="form-control has-feedback-left" required> 
+                                                            <option></option>
+                                                            <option value="18">18</option>
+                                                            <option value="19">19</option>
+                                                            <option value="20">20</option>
+                                                            <option value="21">21</option>
+                                                            <option value="22">22</option>
+                                                            <option value="23">23</option>
+                                                            <option value="24">24</option>
+                                                            <option value="25">25</option>
+                                                            <option value="26">26</option>
+                                                            <option value="27">27</option>
+                                                            <option value="28">28</option>
+                                                            <option value="29">29</option>
+                                                            <option value="30">30</option>
+                                                            <option value="31">31</option>
+                                                            <option value="32">32</option>
+                                                            <option value="33">33</option>
+                                                            <option value="34">34</option>
+                                                            <option value="35">35</option>
+                                                            <option value="36">36</option>
+                                                            <option value="37">37</option>
+                                                            <option value="38">38</option>
+                                                            <option value="39">39</option>
+                                                            <option value="40">40</option>
+                                                            <option value="41">41</option>
+                                                            <option value="42">42</option>
+                                                            <option value="43">43</option>
+                                                            <option value="44">44</option>
+                                                            <option value="45">45</option>
+                                                            <option value="46">46</option>
+                                                            <option value="47">47</option>
+                                                            <option value="48">48</option>
+                                                            <option value="49">49</option>
+                                                            <option value="50">50</option>
+                                                            <option value="51">51</option>
+                                                            <option value="52">52</option>
+                                                            <option value="53">53</option>
+                                                            <option value="54">54</option>
+                                                            <option value="55">55</option>
+                                                            <option value="56">56</option>
+                                                            <option value="57">57</option>
+                                                            <option value="58">58</option>
+                                                            <option value="59">59</option>
+                                                            <option value="60">60</option>
+                                                        </select>
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-3">
+                                                    <p>
+                                                        Estado (*)
+                                                        <select size="1" id="estado" name="estado" class="form-control has-feedback-left" required> 
+                                                            <option></option>
+                                                            <option value="A">Habilitado</option>
+                                                            <option value="D">Deshabilitado</option>
+                                                        </select>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id=""><b>Usuario</b></h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-xs-6">
+                                                            <p>
+                                                                <b>Usuario (*)</b>
+                                                                <input type="text" name="cuenta" class="form-control has-feedback-left" id="cuenta" readonly="">
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <p>
+                                                                <b>Contraseña (*)</b>
+                                                                <input type="text" name="contrasenia" class="form-control has-feedback-left" id="contrasenia" required>
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <p>
+                                                                (*) Campo Obligatorio
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-warning" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
+                                            <button type="submit" class="btn btn-primary" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
                                             <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrar"><i class="fa fa-close"></i> Cerrar</button>
                                         </div>
                                     </div>
@@ -113,8 +253,6 @@
                             </div>
                         </form>
                     </small>
-                    
-
                 </section>
                 <!-- /.content -->
             </div>

@@ -373,24 +373,25 @@ values(5,'Docente');
 insert into cargo(cargo_id, descripcion)
 values(6,'Estudiante');
 -- Usuario
-insert into usuario(doc_id,nombres,apellidos,direccion,telefono,sexo,edad,email,cargo_id)
-values('00000000','Juan','Benito casas','Av. Guardia Civil, urb. Proceres #4456. Surco','996456547','M','28', 'juanBenito@hotmail.com',1);
 
 insert into usuario(doc_id,nombres,apellidos,direccion,telefono,sexo,edad,email,cargo_id)
-values('00000001','Maria','Trinida Asusta','Av. Guardia Civil, urb. Proceres #4450. Surco','996456514','M','25', 'maritri@hotmail.com',2);
+values('45977448','Juan','Benito casas','Av. Guardia Civil, urb. Proceres #4456. Surco','996456547','M','28', 'juanBenito@hotmail.com',1);
 
 insert into usuario(doc_id,nombres,apellidos,direccion,telefono,sexo,edad,email,cargo_id)
-values('00000002','Jacinta','Venecia Chel','Av. Guardia Civil, urb. Proceres #4455. Surco','996456522','M','24', 'jacintabe@hotmail.com',3);
+values('12345678','Maria','Trinida Asusta','Av. Guardia Civil, urb. Proceres #4450. Surco','996456514','M','25', 'maritri@hotmail.com',2);
+
+insert into usuario(doc_id,nombres,apellidos,direccion,telefono,sexo,edad,email,cargo_id)
+values('87654321','Jacinta','Venecia Chel','Av. Guardia Civil, urb. Proceres #4455. Surco','996456522','M','24', 'jacintabe@hotmail.com',3);
 
 -- Credenciales de acceso
 insert into credenciales_acceso(codigo_usuario,clave,tipo,estado,fecha_registro,doc_id)
-values(1,(select MD5('123')),'A','A',(select now()), '00000000');
+values(1,(select MD5('123')),'A','A',(select now()), '45977448');
 
 insert into credenciales_acceso(codigo_usuario,clave,tipo,estado,fecha_registro,doc_id)
-values(2,(select MD5('123')),'D','A',(select now()), '00000001');
+values(2,(select MD5('123')),'D','A',(select now()), '12345678');
 
 insert into credenciales_acceso(codigo_usuario,clave,tipo,estado,fecha_registro,doc_id)
-values(3,(select MD5('123')),'E','A',(select now()), '00000002');
+values(3,(select MD5('123')),'E','A',(select now()), '87654321');
 
 select now()
 select MD5('123')
