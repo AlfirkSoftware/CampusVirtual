@@ -15,7 +15,7 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <?php include_once 'estilos.view.php'; ?>
-    </head>
+</head>
 
 <body class="hold-transition skin-purple-light sidebar-mini">
 <!-- Site wrapper -->
@@ -81,7 +81,7 @@
                                                 </div>
                                                 <div class="col-xs-3">
                                                     <p>
-                                                        Doc. Identidad (*) <input type="text" class="form-control" 
+                                                        Doc. Identidad (*) <input type="text" class="form-control has-feedback-left" style="font-weight:normal;"
                                                                        id="txtDoc_identidad" name="txtDoc_identidad" 
                                                                        required="" autofocus="" 
                                                                        maxlength="8"
@@ -91,7 +91,7 @@
                                                 <div class="col-xs-3">
                                                     <p>
                                                         Cargo (*)
-                                                        <select size="1" id="cargo" name="cargo" class="form-control has-feedback-left" required> 
+                                                        <select size="1" style="font-weight:normal;" id="cargo" name="cargo" class="form-control has-feedback-left" required> 
                                                             <option></option>
                                                             <option value="1">Director</option>
                                                             <option value="2">Gerente</option>
@@ -105,7 +105,7 @@
                                                 <div class="col-xs-3">
                                                     <p>
                                                         Rol (*)
-                                                        <select size="1" id="tipo" name="tipo" class="form-control has-feedback-left" required> 
+                                                        <select size="1" style="font-weight:normal;" id="tipo" name="tipo" class="form-control has-feedback-left" required> 
                                                             <option></option>
                                                             <option value="A">Admin</option>
                                                             <option value="D">Docente</option>
@@ -118,37 +118,37 @@
                                                 <div class="col-xs-6">
                                                     <p>
                                                         Nombres (*)
-                                                        <input type="text" class="form-control" id="txtNombre" name="txtNombre" required="" autofocus="">
+                                                        <input type="text" class="form-control" id="txtNombre" style="font-weight:normal; " name="txtNombre" required="" autofocus="">
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <p>
                                                         Apellidos (*)
-                                                        <input type="text" class="form-control" id="txtApellidos" name="txtApellidos" required="">
+                                                        <input type="text" style="font-weight:normal;" class="form-control" id="txtApellidos" name="txtApellidos" required="">
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <p>
                                                         Dirección (*)
-                                                        <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" required="">
+                                                        <input type="text" style="font-weight:normal;" class="form-control" id="txtDireccion" name="txtDireccion" required="">
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <p>
                                                         Email (*)
-                                                        <input type="email" id="txtEmail" class="form-control" name="txtEmail" required="" onChange="javascript:document.getElementById('cuenta').value = this.value;">
+                                                        <input type="email" style="font-weight:normal;" id="txtEmail" class="form-control" name="txtEmail" required="" onChange="javascript:document.getElementById('cuenta').value = this.value;">
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-3">
                                                     <p>
                                                         Teléfono (*)
-                                                        <input type="text" id="txtTelefono" class="form-control" name="txtTelefono" required="" maxlength="20" onkeypress="ValidaSoloNumeros();">
+                                                        <input type="text" style="font-weight:normal;" id="txtTelefono" class="form-control" name="txtTelefono" required="" maxlength="20" onkeypress="ValidaSoloNumeros();">
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-3">
                                                     <p>
                                                         Sexo (*)
-                                                        <select size="1" id="sexo" name="sexo" class="form-control has-feedback-left" required> 
+                                                        <select size="1" style="font-weight:normal;" id="sexo" name="sexo" class="form-control has-feedback-left" required> 
                                                             <option></option>
                                                             <option value="H">Hombre</option>
                                                             <option value="M">Mujer</option>
@@ -158,7 +158,7 @@
                                                 <div class="col-xs-2">
                                                     <p>
                                                         Edad (*)
-                                                        <select size="1" id="edad" name="edad" class="form-control has-feedback-left" required> 
+                                                        <select size="1" style="font-weight:normal;" id="edad" name="edad" class="form-control has-feedback-left" required> 
                                                             <option></option>
                                                             <option value="18">18</option>
                                                             <option value="19">19</option>
@@ -209,7 +209,7 @@
                                                 <div class="col-xs-3">
                                                     <p>
                                                         Estado (*)
-                                                        <select size="1" id="estado" name="estado" class="form-control has-feedback-left" required> 
+                                                        <select size="1" style="font-weight:normal;" id="estado" name="estado" class="form-control has-feedback-left" required> 
                                                             <option></option>
                                                             <option value="A">Habilitado</option>
                                                             <option value="D">Deshabilitado</option>
@@ -226,13 +226,13 @@
                                                         <div class="col-xs-6">
                                                             <p>
                                                                 <b>Usuario (*)</b>
-                                                                <input type="text" name="cuenta" class="form-control has-feedback-left" id="cuenta" readonly="">
+                                                                <input type="text" style="font-weight:normal;" name="cuenta" class="form-control has-feedback-left" id="cuenta" readonly="">
                                                             </p>
                                                         </div>
                                                         <div class="col-xs-6">
                                                             <p>
                                                                 <b>Contraseña (*)</b>
-                                                                <input type="text" name="contrasenia" class="form-control has-feedback-left" id="contrasenia" required>
+                                                                <input type="text" style="font-weight:normal;" name="contrasenia" class="form-control has-feedback-left" id="contrasenia" required>
                                                             </p>
                                                         </div>
                                                         <div class="col-xs-6">
