@@ -3,7 +3,35 @@
 require_once '../data/Conexion.class.php';
 
 class Usuario extends Conexion {
+
+   // private $codigo_usuario;
     
+    public function listar() {
+       
+        try {
+            $sql = "
+                    select 
+                        codigo_usuario,
+                        clave,
+                        tipo,
+                        estado,
+                        fecha_registro,
+                        doc_id
+                        
+                    from 
+                        credenciales_acceso   
+                    order by 
+                            2
+                ";
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+   
     public function leerDatos($p_dni) {
         try {
             $sql = "
@@ -34,5 +62,4 @@ class Usuario extends Conexion {
             throw $exc;
         }
     }
-    
 }

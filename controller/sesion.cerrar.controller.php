@@ -1,6 +1,6 @@
 <?php
 
-    session_name("seleccion_personal_v2");
+    session_name("CampusVirtual");
     session_start();
     
     unset($_SESSION["s_usuario"]);
