@@ -89,7 +89,35 @@
         if ($resultado) {
             Helper::imprimeJSON(200, "Agregado correctamente", "");
         }
-    } 
+    } else 
+        { //Editar
+            if (
+                    !isset($_POST["p_cod_usuario"]) ||
+                    empty($_POST["p_cod_usuario"])
+            ) {
+                Helper::imprimeJSON(500, "Falta completar datos para editar", "");
+                exit();
+            }
+
+            //$codigo = $_POST["p_cod_usuario"];
+            $objUsuario->setDni($Dni);
+            $objUsuario->setNombres($Nombres);
+            $objUsuario->setApellidos($Apellidos);
+            $objUsuario->setDireccion($Direccion);
+            $objUsuario->setEmail($Email);
+            $objUsuario->setTelefono($Telefono);
+            $objUsuario->setSexo($Sexo);
+            $objUsuario->setEdad($Edad);
+            $objUsuario->setCargo($Cargo);
+            $objUsuario->setConstrasenia($Constrasenia);
+            $objUsuario->setTipo($Tipo);
+            $objUsuario->setEstado($Estado);
+            
+            $resultado = $objUsuario->editar();
+            if ($resultado) {
+                Helper::imprimeJSON(200, "Agregado correctamente", "");
+            }
+        }
 } catch (Exception $exc) {
     Helper::imprimeJSON(500, $exc->getMessage(), "");
 }

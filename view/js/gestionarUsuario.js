@@ -210,7 +210,7 @@ $("#myModal").on("shown.bs.modal", function () {
 });
 
 
-function eliminar(codPues) {
+function eliminar(codUsuario) {
     swal({
         title: "Confirme",
         text: "¿Esta seguro de eliminar el registro seleccionado?",
@@ -225,9 +225,9 @@ function eliminar(codPues) {
             function (isConfirm) {
                 if (isConfirm) {
                     $.post(
-                            "../controller/gestionarPuesto.eliminar.controller.php",
+                            "../controller/gestionarUsuario.eliminar.controller.php",
                             {
-                                p_codigo_puesto_laboral: codPues
+                                p_doc_ident: codUsuario
                             }
                     ).done(function (resultado) {
                         var datosJSON = resultado;

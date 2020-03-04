@@ -92,7 +92,7 @@ require_once '../controller/perfil.usuario.leer.datos.controller.php';
                                                 <header class="text-center">      
                                                     <label>
                                                         <?php
-                                                            if($_SESSION["cargo_id"] >= 1 || $_SESSION["cargo_id"] <= 4)
+                                                            if($_SESSION["cargo_id"] >= 1 && $_SESSION["cargo_id"] <= 4)
                                                                 echo '<img src="../images/bienvenido_admin.png" class="img-thumbnail">';
                                                             if($_SESSION["cargo_id"] == 5)
                                                                 echo '<img src="../images/bienvenido_docente.png" class="img-thumbnail">';

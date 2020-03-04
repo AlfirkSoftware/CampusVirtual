@@ -434,8 +434,9 @@ select * from correlativo
  end
  $$ language plpgsql;
  
+ -- drop FUNCTION fn_registrarCandidato
  -- FUNCION PARA INSERTAR USUARIO AL SISTEMA
- CREATE OR REPLACE FUNCTION fn_registrarCandidato(
+ CREATE OR REPLACE FUNCTION fn_registrarUsuario(
 					
 					p_codigo_usuario integer, p_doc_id character varying(20), p_nombres character varying(50),
 					p_apellidos character varying(50), p_direccion character varying(200), 
@@ -466,4 +467,68 @@ select * from correlativo
  end
  $$ language plpgsql;
  
- select codigo_usuario from credenciales_acceso
+ select * from credenciales_acceso
+  -- FUNCION PARA ACTUALIZAR USUARIO AL SISTEMA
+ CREATE OR REPLACE FUNCTION fn_editarUsuario
+ 								(
+									p_codigo_usuario integer, p_doc_id character varying(20), 
+									p_nombres character varying(50),p_apellidos character varying(50), 
+									p_direccion character varying(200),p_telefono character varying(25), 
+									p_sexo char(1), p_edad char(2), p_email character varying(150), 
+									p_cargo_id integer,	p_clave character(32),p_tipo char(1),p_estado char(1)
+ 								)RETURNS void AS
+ $$
+ begin
+ 							-- update usuario
+ 								
+								update 
+									usuario
+								set
+									doc_id    = p_doc_id,
+									nombres   = p_nombres,
+									apellidos = p_apellidos,
+									direccion = p_direccion,
+									telefono  = p_telefono,
+									sexo      = p_sexo,
+									edad      = p_edad,
+									email     = p_email,
+									cargo_id  = p_cargo_id
+								where 
+									doc_id = p_doc_id;
+								
+								-- update credenciales_acceso
+ 								
+								update 
+									credenciales_acceso
+								set
+									
+									clave  = (select md5(p_clave)),
+									tipo   = p_tipo,
+									estado = p_estado,
+									doc_id = p_doc_id
+								where 
+									doc_id = p_doc_id;
+ 
+ 
+ end
+ $$ language plpgsql;
+ 
+ -- FUNCIÓN PARA ELIMINAR USUARIO
+ CREATE OR REPLACE FUNCTION fn_eliminarUsuario(p_doc_id character varying(20))RETURNS void AS
+ 
+ $$
+ BEGIN
+ 	
+				-- Eliminar credenciales_acceso
+						delete from credenciales_acceso
+						where doc_id = p_doc_id;
+						
+				-- Eliminar usuario
+ 						delete from usuario
+						where doc_id = p_doc_id;
+						
+						
+ 
+ end
+ $$ language plpgsql;
+ 

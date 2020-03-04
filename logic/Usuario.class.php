@@ -204,7 +204,7 @@ class Usuario extends Conexion {
 //                    values(:p_cod_lab, :p_nomb, :p_codigo_pais)
 //                    ";
                 
-                $sql = "select * from fn_registrarCandidato(                    
+                $sql = "select * from fn_registrarUsuario(                    
                                         :p_cod_usuario,
                                         :p_doc_id, 
                                         :p_nombres,
@@ -255,6 +255,61 @@ class Usuario extends Conexion {
             throw $exc;
         }
         
+        return false;
+    }
+
+    public function editar() {
+        try {
+            $sql = "select * from fn_eliminarUsuario(                    
+                                        :p_cod_usuario,
+                                        :p_doc_id, 
+                                        :p_nombres,
+                                        :p_apellidos, 
+                                        :p_direccion, 
+                                        :p_telefono, 
+                                        :p_sexo, 
+                                        :p_edad, 
+                                        :p_email, 
+                                        :p_cargo_id, 
+                                        :p_clave,
+                                        :p_tipo,
+                                        :p_estado
+                                     );";
+            $sentencia = $this->dblink->prepare($sql);
+            
+            $sentencia->bindParam(":p_cod_usuario", $this->getCodigoUsuario());
+            $sentencia->bindParam(":p_doc_id", $this->getDni());
+            $sentencia->bindParam(":p_nombres", $this->getNombres());
+            $sentencia->bindParam(":p_apellidos", $this->getApellidos());
+            $sentencia->bindParam(":p_direccion", $this->getDireccion());
+            $sentencia->bindParam(":p_telefono", $this->getTelefono());
+            $sentencia->bindParam(":p_sexo", $this->getSexo());
+            $sentencia->bindParam(":p_edad", $this->getEdad());
+            $sentencia->bindParam(":p_email", $this->getEmail());
+            $sentencia->bindParam(":p_cargo_id", $this->getCargo());
+            $sentencia->bindParam(":p_clave", $this->getConstrasenia());
+            $sentencia->bindParam(":p_tipo", $this->getTipo());
+            $sentencia->bindParam(":p_estado", $this->getEstado());
+            $sentencia->execute();
+            return true;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+        return false;
+    }
+
+    public function eliminar() {
+        try {
+            $sql = "select * from fn_eliminarUsuario(                    
+                                        :p_doc_id
+                                     );";
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_doc_id", $this->getDni());
+            $sentencia->execute();
+            return true;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
         return false;
     }
 }
