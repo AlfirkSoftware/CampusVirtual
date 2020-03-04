@@ -1,8 +1,9 @@
 <?php
     require_once 'validar.datos.sesion.view.php';
-//      $dniSesion= $_SESSION["s_doc_id"] ;
+
+    //$_POST["s_usuario"] = $dniSesion;
     
-//require_once '../logic/Sesion.class.php';
+   // require_once '../controller/perfil.usuario.leer.datos.controller.php';
     
 ?>
 <!DOCTYPE html>
@@ -253,6 +254,71 @@
                             </div>
                         </form>
                     </small>
+                    <small>
+                        <form role="form" enctype="multipart/form-data" action="../controller/usuario.actualizar.foto.datos.controller.php" method="post">
+                        <div class="box-body col-md-offset-1">
+                            <div class="modal fade" id="myModalFoto" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="titulomodal">Subir Foto</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                               
+                                                <div class="col-xs-3">
+                                                    <p>
+                                                        Documento (*) <input type="text" class="form-control has-feedback-left" style="font-weight:normal;"
+                                                                       id="txtDocID" name="txtDocID" 
+                                                                       required="" autofocus="" 
+                                                                       maxlength="8" readonly="true"
+                                                                       onkeypress="ValidaSoloNumeros();">
+                                                    </p>
+                                                </div>
+                                            </div><br/><br/><br/><br/>
+                                            <div class="row">
+                                                <div class="col-xs-6 col-md-offset-3">
+                                                    <section id="foto_id" name="foto_id"
+                                                    class="card-body d-flex justify-content-between align-items-center thumbnail">
+
+                                                            <img src="fotos/<?php echo $fotoUsuario; ?>" class="img-circle" alt="User Image">
+                                                       
+                                                    
+
+                                                    </section>  
+                                                </div>   
+                                            </div>   
+                                            <div class="row">
+                                                <div class="col-xs-8 col-md-offset-2">
+                                                    <div id="foto_id" name="foto_id"
+                                                    class="card-body d-flex justify-content-between align-items-center input-group">
+                                                        <label class="input-group-btn">
+                                                            <span class="btn btn-info">
+                                                               <i class="fa fa-camera"></i><input type="file" style="display: none;" multiple accept="image/png,image/jpeg" id="fotoUsuario" name="fotoUsuario">
+                                                            </span>
+                                                        </label>
+                                                        <input type="text" class="form-control" readonly>
+                                                    </div>
+                                                    <span class="help-block">
+                                                    Seleccione una foto 
+                                                </span>
+                                                </div>
+                                                
+                                            </div>
+                                       
+                                    
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary" aria-hidden="true"><i class="fa fa-save"></i> Guardar Foto</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrar"><i class="fa fa-close"></i> Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          </div>
+                        </form>
+                    </small>
                 </section>
                 <!-- /.content -->
             </div>
@@ -270,5 +336,36 @@
         
         <script src="js/gestionarUsuario.js" type="text/javascript"></script>
 
+        <?php include_once 'scripts.view.php'; ?>
+
+        <script>
+            $(function() {
+
+          // We can attach the `fileselect` event to all file inputs on the page
+          $(document).on('change', ':file', function() {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+          });
+
+          // We can watch for our custom `fileselect` event like this
+          $(document).ready( function() {
+              $(':file').on('fileselect', function(event, numFiles, label) {
+
+                  var input = $(this).parents('.input-group').find(':text'),
+                      log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                  if( input.length ) {
+                      input.val(log);
+                  } else {
+                      if( log ) alert(log);
+                  }
+
+              });
+          });
+
+        });
+        </script>    
     </body>
 </html>

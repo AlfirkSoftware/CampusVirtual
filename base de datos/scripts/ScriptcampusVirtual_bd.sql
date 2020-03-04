@@ -33,7 +33,7 @@ CREATE TABLE CREDENCIALES_ACCESO
 	codigo_usuario integer not null,
 	clave character(32) not NULL,
 	tipo char(1) not null, -- Amin: A, Docente: D, Estudiante: E
-	-- p_foto varchar(50),
+    p_foto varchar(200),
 	estado char(1),
     fecha_registro varchar(50),
     doc_ID varchar(20),
@@ -385,7 +385,7 @@ values('87654321','Jacinta','Venecia Chel','Av. Guardia Civil, urb. Proceres #44
 
 -- Credenciales de acceso
 insert into credenciales_acceso(codigo_usuario,clave,tipo,estado,fecha_registro,doc_id)
-values(1,(select MD5('123')),'A','A',(select now()), '45977448');
+values(2,(select MD5('123')),'A','A',(select now()), '12345678');
 
 insert into credenciales_acceso(codigo_usuario,clave,tipo,estado,fecha_registro,doc_id)
 values(2,(select MD5('123')),'D','A',(select now()), '12345678');
@@ -467,7 +467,7 @@ select * from correlativo
  end
  $$ language plpgsql;
  
- select * from credenciales_acceso
+ select * from usuario
   -- FUNCION PARA ACTUALIZAR USUARIO AL SISTEMA
  CREATE OR REPLACE FUNCTION fn_editarUsuario
  								(

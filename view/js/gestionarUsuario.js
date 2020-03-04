@@ -47,6 +47,8 @@ function listar() {
 
                 html += '<td align="center" style="font-weight:normal">' + item.fecha_registro + '</td>';
                 html += '<td align="center">';
+                html += '<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalFoto" onclick="leerFoto(' + item.doc_id + ')"><i class="fa fa-camera"></i></button>';
+                html += '&nbsp;&nbsp;&nbsp;';
                 html += '<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal" onclick="leerDatos(' + item.doc_id + ')"><i class="fa fa-pencil"></i></button>';
                 html += '&nbsp;&nbsp;&nbsp;';
                 html += '<button type="button" class="btn btn-danger btn-xs" onclick="eliminar(' + item.doc_id + ')"><i class="fa fa-close"></i></button>';
@@ -104,6 +106,32 @@ function leerDatos(codIdentidad) {
             $("#tipo").val(jsonResultado.datos.tipo);
             $("#estado").val(jsonResultado.datos.estado);
             $("#cuenta").val(jsonResultado.datos.email);
+            
+
+
+            $("#titulomodal").html("Modificar datos del puesto de trabajo");
+        }
+    }).fail(function (error) {
+        var datosJSON = $.parseJSON(error.responseText);
+        swal("Error", datosJSON.mensaje, "error");
+    });
+}
+
+function leerFoto(codIdentidad) {
+    $.post
+            (
+                    "../controller/gestionarFotoUsuario.leer.datos.controller.php",
+                    {
+                        p_doc_ident: codIdentidad
+                    }
+            ).done(function (resultado) {
+        var jsonResultado = resultado;
+        if (jsonResultado.estado === 200) {
+            $("#txtTipoOperacion").val("editar");
+            //$("#txtCodigo").val(jsonResultado.datos.codigo_usuario);
+            $("#txtDocID").val(jsonResultado.datos.doc_id);
+            $("#foto_id").val(jsonResultado.datos.p_foto);
+        
             
 
 

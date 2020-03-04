@@ -6,7 +6,7 @@ require_once '../logic/Usuario.class.php';
 
 //Haciendo lectura de la variable $_POST["dniUsuarioSesion"] que viene del archivo perfil.usuario.view.php
 //$dni = $_POST["dniUsuarioSesion"];
-$dni = $_POST["txtDocID"];
+$dni = $_POST["s_usuario"];
 
 try {
     $objUsuario = new Usuario();

@@ -19,7 +19,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                          <img src="fotos/<?php echo $fotoUsuario; ?>" class="img-circle" alt="User Image">
+                          <img src="fotos/<?php echo $fotoUsuario; ?>" class="img-responsive" alt="User Image">
                       </div>
                     </a>
                   </li>

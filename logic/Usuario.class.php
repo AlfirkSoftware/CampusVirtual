@@ -5,6 +5,7 @@ require_once '../data/Conexion.class.php';
 class Usuario extends Conexion {
     private $CodigoUsuario;
     private $Dni;
+    private $P_foto;
     private $Nombres;
     private $Apellidos;
     private $Direccion;
@@ -24,6 +25,10 @@ class Usuario extends Conexion {
 
     public function getDni() {
         return $this->Dni;
+    }
+
+    public function getP_foto() {
+        return $this->P_foto;
     }
 
     public function getNombres() {
@@ -78,6 +83,10 @@ class Usuario extends Conexion {
 
     public function setDni($Dni) {
         $this->Dni = $Dni;
+    }
+
+    public function setP_foto($P_foto) {
+        $this->P_foto = $P_foto;
     }
 
     public function setNombres($Nombres) {
@@ -185,6 +194,30 @@ class Usuario extends Conexion {
         }
     }
 
+    public function leerFoto($p_dni) {
+        try {
+            $sql = "
+                    select 
+                        doc_id,
+                        p_foto
+                    from 
+                        credenciales_acceso
+                    where 
+                        doc_id = :p_dni
+
+                ";
+            
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->bindParam(":p_dni", $p_dni);
+           // $sentencia->bindParam(":p_foto", $this->getP_foto);
+            $sentencia->execute();
+            $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
+            return $resultado;
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
+
     public function agregar() {
         $this->dblink->beginTransaction();
         
@@ -260,7 +293,7 @@ class Usuario extends Conexion {
 
     public function editar() {
         try {
-            $sql = "select * from fn_eliminarUsuario(                    
+            $sql = "select * from fn_editarUsuario(                    
                                         :p_cod_usuario,
                                         :p_doc_id, 
                                         :p_nombres,
