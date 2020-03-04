@@ -81,7 +81,7 @@
                                                 </div>
                                                 <div class="col-xs-3">
                                                     <p>
-                                                        Doc. Identidad (*) <input type="text" class="form-control has-feedback-left" style="font-weight:normal;"
+                                                        Documento (*) <input type="text" class="form-control has-feedback-left" style="font-weight:normal;"
                                                                        id="txtDoc_identidad" name="txtDoc_identidad" 
                                                                        required="" autofocus="" 
                                                                        maxlength="8"

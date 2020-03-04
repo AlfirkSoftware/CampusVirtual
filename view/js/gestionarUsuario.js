@@ -19,7 +19,7 @@ function listar() {
             html += '<thead>';
             html += '<tr style="background-color: #ededed; height:25px;">';
             html += '<th style="text-align: center">CODIGO</th>';
-            html += '<th style="text-align: center">DOC. IDENTIDAD</th>';
+            html += '<th style="text-align: center">DOCUMENTO</th>';
             html += '<th style="text-align: center">CLAVE</th>';
             html += '<th style="text-align: center">ROL</th>';
             html += '<th style="text-align: center">ESTADO</th>';
@@ -114,6 +114,100 @@ function leerDatos(codIdentidad) {
         swal("Error", datosJSON.mensaje, "error");
     });
 }
+
+$("#frmgrabar").submit(function (event) {
+    event.preventDefault();
+
+    swal({
+        title: "Confirme",
+        text: "¿Esta seguro de grabar los datos ingresados?",
+        showCancelButton: true,
+        confirmButtonColor: '#3d9205',
+        confirmButtonText: 'Si',
+        cancelButtonText: "No",
+        closeOnConfirm: false,
+        closeOnCancel: true,
+        imageUrl: "../images/pregunta.png"
+    },
+            function (isConfirm) {
+
+                if (isConfirm) { //el usuario hizo clic en el boton SI     
+                    //procedo a grabar
+                    //Llamar al controlador para grabar los datos
+
+                    //var codLab = ($("#txtTipoOperacion").val()==="agregar")? 
+
+                    var codUsuario = "";
+                    if ($("#txtTipoOperacion").val() === "agregar") {
+                        codUsuario = "0";
+                    } else {
+                        codUsuario = $("#txtCodigo").val();
+                    }
+
+                    $.post(
+                            "../controller/gestionarUsuario.agregar.editar.controller.php",
+                            {
+                                p_doc_ident:   $("#txtDoc_identidad").val(),
+                                p_nombres:     $("#txtNombre").val(),
+                                p_apellidos:   $("#txtApellidos").val(),
+                                p_direccion:   $("#txtDireccion").val(),
+                                p_email:       $("#txtEmail").val(),
+                                p_telefono:    $("#txtTelefono").val(),
+                                p_sexo:        $("#sexo").val(),
+                                p_edad:        $("#edad").val(),
+                                p_cargo:       $("#cargo").val(),
+                                p_contrasenia: $("#contrasenia").val(),
+                                p_tipo:        $("#tipo").val(),
+                                p_estado:      $("#estado").val(),
+                               // p_cuenta:      $("#cuenta").val(),
+                                p_tipo_ope:    $("#txtTipoOperacion").val(),
+                                p_cod_usuario: codUsuario
+                            }
+                    ).done(function (resultado) {
+                        var datosJSON = resultado;
+
+                        if (datosJSON.estado === 200) {
+                            swal("Exito", datosJSON.mensaje, "success");
+                            $("#btncerrar").click(); //Cerrar la ventana 
+                            listar(); //actualizar la lista
+                        } else {
+                            swal("Mensaje del sistema", resultado, "warning");
+                        }
+
+                    }).fail(function (error) {
+                        var datosJSON = $.parseJSON(error.responseText);
+                        swal("Error", datosJSON.mensaje, "error");
+                    });
+
+                }
+            });
+
+});
+
+
+$("#btnagregar").click(function () {
+    $("#txtTipoOperacion").val("agregar");
+    $("#txtCodigo").val("");
+    $("#txtDoc_identidad").val("");
+    $("#txtNombre").val("");
+    $("#txtApellidos").val("");
+    $("#txtDireccion").val("");
+    $("#txtEmail").val("");
+    $("#txtTelefono").val("");
+    $("#sexo").val("");
+    $("#edad").val("");
+    $("#cargo").val("");
+    $("#contrasenia").val("");
+    $("#tipo").val("");
+    $("#cuenta").val("");
+    $("#estado").val("");
+    $("#titulomodal").html("Crear nuevo usuario");
+});
+
+
+$("#myModal").on("shown.bs.modal", function () {
+    $("#txtDoc_identidad").focus();
+});
 
 
 function eliminar(codPues) {

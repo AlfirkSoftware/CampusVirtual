@@ -395,8 +395,75 @@ values(3,(select MD5('123')),'E','A',(select now()), '87654321');
 
 select now()
 select MD5('123')
+
+update correlativo
+set numero = 3
+where tabla = 'usuario';
+
+update correlativo
+set numero = 3
+where tabla = 'credenciales_acceso';
+
+update correlativo
+set numero = 6
+where tabla = 'cargo';
 -- CONSULTAS:
 
-select * from credenciales_acceso
-
 select * from usuario
+
+select * from correlativo
+
+-- FUNCIONES:
+
+-- f_generar_correlativo(character varying)
+
+ -- DROP FUNCTION f_generar_correlativo(character varying);
+
+ CREATE OR REPLACE FUNCTION f_generar_correlativo(p_tabla character varying)
+  RETURNS SETOF integer AS
+ $$
+	
+	begin
+		return query
+		select 
+			c.numero+1 
+		from 
+			correlativo c 
+		where 
+			c.tabla = p_tabla;
+ end
+ $$ language plpgsql;
+ 
+ -- FUNCION PARA INSERTAR USUARIO AL SISTEMA
+ CREATE OR REPLACE FUNCTION fn_registrarCandidato(
+					
+					p_codigo_usuario integer, p_doc_id character varying(20), p_nombres character varying(50),
+					p_apellidos character varying(50), p_direccion character varying(200), 
+	 				p_telefono character varying(25), p_sexo char(1), p_edad char(2), p_email character varying(150), 
+	 				p_cargo_id integer,	p_clave character(32),p_tipo char(1),p_estado char(1)
+					 )  RETURNS void AS   
+ $$
+ begin
+							
+							insert into usuario
+									(
+										doc_id,nombres,apellidos,direccion,
+										telefono,sexo,edad, email,cargo_id
+									)
+							values
+								(
+									p_doc_id,p_nombres,p_apellidos,p_direccion,
+									p_telefono,p_sexo,p_edad,p_email,p_cargo_id
+								);
+
+
+
+
+-- select * from candidato                    
+				
+								insert into credenciales_acceso(codigo_usuario, clave,tipo,estado,fecha_registro,doc_id) 
+								values (p_codigo_usuario,(select md5(p_clave)),p_tipo,p_estado,(select now()),p_doc_id);
+ end
+ $$ language plpgsql;
+ 
+ select codigo_usuario from credenciales_acceso
