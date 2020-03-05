@@ -27,8 +27,10 @@ CREATE TABLE USUARIO
     constraint fk_usuario_cargo_id foreign key(cargo_id) references cargo(cargo_id),
 	CONSTRAINT uni_email UNIQUE (email)
 );
-alter table CREDENCIALES_ACCESO
-drop column p_foto
+-- alter table CREDENCIALES_ACCESO
+-- drop column p_foto
+
+select * from CREDENCIALES_ACCESO
 CREATE TABLE CREDENCIALES_ACCESO
  ( 	
 	codigo_usuario integer not null,
@@ -109,31 +111,33 @@ CREATE TABLE RESULTADO_PRUEBA_USUARIO
 	resultado_prueba_usuario_id integer not null,
     promedio integer not null,
     estado_promedio char(1) not null, -- aquí se comprueba si aprobó o no.
-    doc_id character varying(20),
+  --  doc_id character varying(20),
     prueba_id integer,
     constraint pk_resultado_prueba_usuario_resultado_prueba_usuario_id primary key(resultado_prueba_usuario_id),
-    constraint fk_resultado_prueba_usuario_doc_id foreign key(doc_id) references usuario(doc_id),
+   -- constraint fk_resultado_prueba_usuario_doc_id foreign key(doc_id) references usuario(doc_id),
     constraint fk_resultado_prueba_usuario_prueba_id foreign key(prueba_id) references prueba(prueba_id)
 );
 
-
-CREATE TABLE EVENTO
+CREATE TABLE ANUNCIO
 (
-	evento_id integer not null,
+	anuncio_id integer not null,
 	titulo_evento character varying(200) not null, 
 	descripcion_evento varchar(500) not null,
-	constraint pk_evento_evento_id primary key(evento_id)
+	tipo_anuncio character varying(50)not null,
+	constraint pk_anuncio_anuncio_id primary key(anuncio_id)
 );
 
-CREATE TABLE DETALLE_CURSO_EVENTO
+CREATE TABLE DETALLE_USUARIO_CURSO_EVENTO
 (
-	detalle_curso_evento_id integer not null,
-    fecha varchar(50) not null,
-    evento_id integer,
+	detalle_usuario_curso_evento_id integer not null,
+    fecha character varying(50) not null,
+	doc_id character varying(20),
+    anuncio_id integer,
     curso_id integer,
-    constraint pk_detalle_curso_evento_detalle_curso_evento_id primary key(detalle_curso_evento_id),
-    constraint fk_detalle_curso_evento_evento_id foreign key(evento_id) references evento(evento_id),
-    constraint fk_detalle_curso_evento_curso_id foreign key(curso_id) references curso(curso_id)
+    constraint pk_detalle_usuario_curso_evento_detalle_usuario_curso_evento_id primary key(detalle_usuario_curso_evento_id),
+    constraint fk_detalle_usuario_curso_evento_doc_id foreign key(doc_id) references usuario(doc_id),
+	constraint fk_detalle_usuario_curso_evento_anuncio_id foreign key(anuncio_id) references anuncio(anuncio_id),
+    constraint fk_detalle_usuario_curso_evento_curso_id foreign key(curso_id) references curso(curso_id)
 );
 
 CREATE TABLE correlativo
@@ -143,7 +147,7 @@ CREATE TABLE correlativo
 	CONSTRAINT pk_correlativo PRIMARY KEY (tabla)
  );
  
- select * from menu
+ select * from cargo
  
  -- Registros
  -- Menú
@@ -160,9 +164,9 @@ values(5,'Campus Virtual');
 insert into menu(codigo_menu,nombre)
 values(6,'Simulador'); 
 
-select * from cargo
+select * from menu_item_accesos
 --  Menú item acceso
-select * from cargo
+delete from menu_item_accesos
 -- Director General
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
 values(1,1,1,1); 
@@ -185,9 +189,11 @@ values(5,9,1,1);
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
 values(5,10,1,1); 
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
-values(6,11,1,2); 
+values(5,11,1,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,12,1,1); 
 
-select * from menu_item_accesos
+-- select * from menu_item_accesos;
 -- Gerente general
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
 values(1,1,2,1); 
@@ -210,7 +216,9 @@ values(5,9,2,1);
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
 values(5,10,2,1); 
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
-values(6,11,2,1); 
+values(5,11,2,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,12,2,1); 
 
 -- Coordinadora Académica
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
@@ -234,7 +242,9 @@ values(5,9,3,1);
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
 values(5,10,3,1); 
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
-values(6,11,3,1); 
+values(5,11,3,1); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,12,3,1); 
 
 -- Analista Programador
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
@@ -258,7 +268,9 @@ values(5,9,4,1);
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
 values(5,10,4,1); 
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
-values(6,11,4,1); 
+values(5,11,4,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,12,4,1); 
 
 -- Docente
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
@@ -280,9 +292,11 @@ values(4,8,5,1);
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
 values(5,9,5,2); 
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
-values(5,10,5,1); 
+values(5,10,5,1);
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
-values(6,11,5,1); 
+values(5,11,5,2); 
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,12,5,1); 
 
 -- Estudiante
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
@@ -304,12 +318,14 @@ values(4,8,6,1);
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
 values(5,9,6,2); 
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
-values(5,10,6,2); 
+values(5,10,6,1);
 insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
-values(6,11,6,1); 
+values(5,11,6,2);
+insert into menu_item_accesos(codigo_menu,codigo_menu_item,cargo_id,acceso)
+values(6,12,6,1); 
 
 --  Menú item
-select * from menu_item
+-- delete from menu_item
 
 insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
 values(1,1,'Inicio', 'menu.principal.view.php'); 
@@ -332,7 +348,9 @@ values(5,9,'Gestionar Curso', 'gestionarCurso.view.php');
 insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
 values(5,10,'Gestionar Archivo', 'gestionarArchivos.view.php'); 
 insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
-values(6,11,'Simulador', 'pruebaSimulador.view.php'); 
+values(5,11,'Gestionar Asignación', 'detalleAsignacion.view.php'); 
+insert into menu_item(codigo_menu,codigo_menu_item,nombre,archivo)
+values(6,12,'Simulador', 'pruebaSimulador.view.php'); 
 
 
  -- Correlativo
@@ -532,5 +550,39 @@ select * from correlativo
  
  end
  $$ language plpgsql;
- select * from credenciales_acceso
  
+ -- FUNCIÓN PARA REGISTRAR EVENTO O ANUNCIO.
+ CREATE OR REPLACE FUNCTION fn_registrarAnuncio
+ 							(
+								p_curso_id integer, p_nombre_curso character varying(200),
+								p_detalle_curso_evento_id integer, fecha character varying(50),
+								p_evento_id integer, p_titulo_evento character varying(200),
+								p_descripcion_evento character varying(500), 
+								
+							
+							)RETURNS void AS
+ 
+ $$
+ BEGIN
+ 	
+				-- Eliminar credenciales_acceso
+						insert into curso
+						
+				-- Eliminar usuario
+ 						delete from usuario
+						where doc_id = p_doc_id;
+						
+						
+ 
+ end
+ $$ language plpgsql;
+ 
+select 
+	* 
+from 
+	curso c inner join detalle_curso_evento d
+on
+	c.curso_id = d.curso_id inner join evento e
+on
+	d.evento_id = e.evento_id
+	

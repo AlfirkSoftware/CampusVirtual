@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="icon" href="../images/IPEV.jpg">
-        <title> Campus Virtual | Inicio</title>
+        <title> Campus Virtual | Usuarios</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <?php include_once 'estilos.view.php'; ?>
@@ -49,7 +49,7 @@
                         <div class="col-md-12">
                             <div class="box box-primary">
                                 <section class="content-header">
-                                    <h3>Usuario</h3>
+                                    <h3>Usuarios</h3>
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-bullhorn"></i> Agregar nuevo usuario</button>
                                 </section>
                                 <div class="box-body">
@@ -213,7 +213,7 @@
                                                         <select size="1" style="font-weight:normal;" id="estado" name="estado" class="form-control has-feedback-left" required> 
                                                             <option></option>
                                                             <option value="A">Habilitado</option>
-                                                            <option value="D">Deshabilitado</option>
+                                                            <option value="I">Deshabilitado</option>
                                                         </select>
                                                     </p>
                                                 </div>

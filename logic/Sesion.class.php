@@ -59,8 +59,8 @@ class Sesion extends Conexion {
             if ($sentencia->rowCount()) {//Le pregunto si ha devuelto registros
                 //El usuario si existe
                 $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
-                if ($resultado["clave"] == md5($this->getClave())) {
-                    if ($resultado["estado"] == "I") {
+                if ($resultado["clave"] === md5($this->getClave())) {
+                    if ($resultado["estado"] === "I") {
                         return "IN"; //Usuario Inactivo
                     } else {
                         session_name("CampusVirtual");
