@@ -130,7 +130,8 @@ function leerFoto(codIdentidad) {
             $("#txtTipoOperacion").val("editar");
             //$("#txtCodigo").val(jsonResultado.datos.codigo_usuario);
             $("#txtDocID").val(jsonResultado.datos.doc_id);
-            $("#foto_id").val(jsonResultado.datos.p_foto);
+            $("#p_foto").val("");
+            $("#file-preview-zone").val("view");
         
             
 
@@ -141,6 +142,8 @@ function leerFoto(codIdentidad) {
         var datosJSON = $.parseJSON(error.responseText);
         swal("Error", datosJSON.mensaje, "error");
     });
+
+    
 }
 
 $("#frmgrabar").submit(function (event) {

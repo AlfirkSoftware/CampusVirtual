@@ -27,13 +27,14 @@ CREATE TABLE USUARIO
     constraint fk_usuario_cargo_id foreign key(cargo_id) references cargo(cargo_id),
 	CONSTRAINT uni_email UNIQUE (email)
 );
-
+alter table CREDENCIALES_ACCESO
+drop column p_foto
 CREATE TABLE CREDENCIALES_ACCESO
  ( 	
 	codigo_usuario integer not null,
 	clave character(32) not NULL,
 	tipo char(1) not null, -- Amin: A, Docente: D, Estudiante: E
-    p_foto varchar(200),
+   -- p_foto bytea,
 	estado char(1),
     fecha_registro varchar(50),
     doc_ID varchar(20),
@@ -434,7 +435,7 @@ select * from correlativo
  end
  $$ language plpgsql;
  
- -- drop FUNCTION fn_registrarCandidato
+ -- drop FUNCTION fn_registrarUsuario
  -- FUNCION PARA INSERTAR USUARIO AL SISTEMA
  CREATE OR REPLACE FUNCTION fn_registrarUsuario(
 					
@@ -467,7 +468,7 @@ select * from correlativo
  end
  $$ language plpgsql;
  
- select * from usuario
+ select * from credenciales_acceso
   -- FUNCION PARA ACTUALIZAR USUARIO AL SISTEMA
  CREATE OR REPLACE FUNCTION fn_editarUsuario
  								(
@@ -531,4 +532,5 @@ select * from correlativo
  
  end
  $$ language plpgsql;
+ select * from credenciales_acceso
  

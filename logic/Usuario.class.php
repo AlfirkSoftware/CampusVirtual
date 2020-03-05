@@ -198,8 +198,7 @@ class Usuario extends Conexion {
         try {
             $sql = "
                     select 
-                        doc_id,
-                        p_foto
+                        doc_id
                     from 
                         credenciales_acceso
                     where 

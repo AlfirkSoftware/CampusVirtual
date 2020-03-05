@@ -14,8 +14,8 @@ echo '</pre>';
 $dni = $_POST["txtDocID"];
 //echo $dni;
 
-if ($_FILES["fotoUsuario"]["name"] != "" ){
-    $tipo_archivo = $_FILES["fotoUsuario"]["type"];
+if ($_FILES["file-upload"]["name"] != "" ){
+    $tipo_archivo = $_FILES["file-upload"]["type"];
     $direccion_subida = "../view/fotos/";
     
     $nombre_archivo_subir = $direccion_subida . $dni . ".png";
@@ -28,10 +28,10 @@ if ($_FILES["fotoUsuario"]["name"] != "" ){
     }
     */
     
-    $resultado_subida = move_uploaded_file( $_FILES["fotoUsuario"]["tmp_name"], $nombre_archivo_subir);
+    $resultado_subida = move_uploaded_file( $_FILES["file-upload"]["tmp_name"], $nombre_archivo_subir);
     //$resultado_subida = true o false
     if ($resultado_subida){ //true
-        Helper::mensaje("Se ha actualizado la foto del usuario", "s", "../view/menu.principal.view.php", 5);
+        Helper::mensaje("Se ha actualizado la foto del usuario", "s", "../view/gestionarUsuario.view.php", 5);
     }
     
     //if ($tipo_archivo)

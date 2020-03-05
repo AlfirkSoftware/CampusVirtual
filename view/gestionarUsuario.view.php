@@ -257,7 +257,7 @@
                     <small>
                         <form role="form" enctype="multipart/form-data" action="../controller/usuario.actualizar.foto.datos.controller.php" method="post">
                         <div class="box-body col-md-offset-1">
-                            <div class="modal fade" id="myModalFoto" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="myModalFoto" name="myModalFoto" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -266,7 +266,6 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                               
                                                 <div class="col-xs-3">
                                                     <p>
                                                         Documento (*) <input type="text" class="form-control has-feedback-left" style="font-weight:normal;"
@@ -279,10 +278,10 @@
                                             </div><br/><br/><br/><br/>
                                             <div class="row">
                                                 <div class="col-xs-6 col-md-offset-3">
-                                                    <section id="foto_id" name="foto_id"
+                                                    <section id="file-preview-zone" name="file-preview-zone"
                                                     class="card-body d-flex justify-content-between align-items-center thumbnail">
 
-                                                            <img src="fotos/<?php echo $fotoUsuario; ?>" class="img-circle" alt="User Image">
+                                                            
                                                        
                                                     
 
@@ -295,10 +294,10 @@
                                                     class="card-body d-flex justify-content-between align-items-center input-group">
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-info">
-                                                               <i class="fa fa-camera"></i><input type="file" style="display: none;" multiple accept="image/png,image/jpeg" id="fotoUsuario" name="fotoUsuario">
+                                                               <i class="fa fa-camera"></i><input type="file" style="display: none;" multiple accept="image/png,image/jpeg" id="file-upload" name="file-upload">
                                                             </span>
                                                         </label>
-                                                        <input type="text" class="form-control" readonly>
+                                                        <input type="text" id="p_foto" name="p_foto" class="form-control" readonly>
                                                     </div>
                                                     <span class="help-block">
                                                     Seleccione una foto 
@@ -366,6 +365,32 @@
           });
 
         });
-        </script>    
+        </script>  
+        <script>
+            function readFile(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+         
+                    reader.onload = function (e) {
+                        var filePreview = document.createElement('img');
+                        filePreview.id = 'file-preview';
+                        //e.target.result contents the base64 data from the image uploaded
+                        filePreview.src = e.target.result;
+                        console.log(e.target.result);
+         
+                        var previewZone = document.getElementById('file-preview-zone');
+                        previewZone.appendChild(filePreview);
+                    }
+         
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+         
+            var fileUpload = document.getElementById('file-upload');
+            fileUpload.onchange = function (e) {
+                readFile(e.srcElement);
+            }
+         
+        </script>  
     </body>
 </html>
