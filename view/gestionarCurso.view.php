@@ -49,22 +49,11 @@ require_once 'validar.datos.sesion.view.php';
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-">
                             <div class="box box-primary">
                                 <section class="content-header">
                                     <h3>Cursos</h3>
                                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-plus"> Agregar nuevo anuncio </i></button>
-                                </section>
-                                <div class="box-body">
-                                    <div id="listado"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="box box-primary">
-                                <section class="content-header">
-                                    <h3>Anuncios</h3>
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalAnuncio" id="btnagregar"><i class="fa fa-plus"> Agregar nuevo anuncio </i></button>
                                 </section>
                                 <div class="box-body">
                                     <div id="listado"></div>
@@ -100,8 +89,8 @@ require_once 'validar.datos.sesion.view.php';
                                                 <div class="col-xs-6">
                                                     <p>
                                                         Nombre del curso<input type="text" 
-                                                                                name="txtPuesto" 
-                                                                                id="txtPuesto" 
+                                                                                name="txtCurso" 
+                                                                                id="txtCurso" 
                                                                                 required=""
                                                                                 class="form-control input-sm">
                                                     </p>
@@ -117,63 +106,6 @@ require_once 'validar.datos.sesion.view.php';
                             </div>
                         </form>
                     </small>
-                    <!-- INICIO del formulario modal -->
-                    <small>
-                        <form id="frmgrabar">
-                            <div class="modal fade" id="myModalAnuncio" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="titulomodal">Registrar Anuncio</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-xs-2">
-                                                    <p>
-                                                        <input type="hidden" value="" id="txtTipoOperacion" name="txtTipoOperacion">
-                                                        Código <input type="text" 
-                                                                      name="txtCodigo" 
-                                                                      id="txtCodigo" 
-                                                                      class="form-control input-sm" 
-                                                                      readonly="">
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-8">
-                                                    <p>
-                                                        Título Anuncio<input type="text" 
-                                                                                name="txtPuesto" 
-                                                                                id="txtPuesto" 
-                                                                                required=""
-                                                                                class="form-control input-sm">
-                                                    </p>
-                                                </div>
-                                                <div class="col-xs-4">
-                                                    <p>
-                                                        Tipo Anuncio
-                                                        <select required="" name="cboArea" id="cboArea" class="form-control input-sm">
-                                                            <option value="">-</option>
-                                                            <option value="1">Informativo</option>
-                                                            <option value="2">celebraciones</option>
-                                                            <option value="3">Pago</option>
-                                                        </select>
-                                                    </p>
-                                                </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-warning" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrar"><i class="fa fa-close"></i> Cerrar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </small>
-                    
-
-                    
                 </section>
 
             </div>
@@ -218,12 +150,12 @@ require_once 'validar.datos.sesion.view.php';
 
             });
         </script>    
-       
+       <script src="js/gestionarCurso.js" type="text/javascript"></script>
        <!--
         <script src="js/cbCodigo.js" type="text/javascript"></script>
         <script src="js/convocatoria.js" type="text/javascript"></script>
         <script src="js/puesto.js" type="text/javascript"></script>
-        <script src="js/gestionar.puesto.admin.js" type="text/javascript"></script>
+        
 
     -->
     </body>

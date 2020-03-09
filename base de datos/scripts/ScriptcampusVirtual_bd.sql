@@ -427,10 +427,61 @@ update correlativo
 set numero = 6
 where tabla = 'cargo';
 -- CONSULTAS:
+select * from curso
+-- registro de curso
+insert into curso(curso_id, nombre_curso)
+values(1,'Agile Coach');
+insert into curso(curso_id, nombre_curso)
+values(2,'Innovation Management');
+insert into curso(curso_id, nombre_curso)
+values(3,'Kanban');
+insert into curso(curso_id, nombre_curso)
+values(4,'Scrum Master');
+insert into curso(curso_id, nombre_curso)
+values(5,'Scrum Foundation');
+insert into curso(curso_id, nombre_curso)
+values(6,'Scrum Developer');
+insert into curso(curso_id, nombre_curso)
+values(7,'Scrum Advanced');
+insert into curso(curso_id, nombre_curso)
+values(8,'Scrum Product Owner');
+insert into curso(curso_id, nombre_curso)
+values(9,'Iso 27001 Auditor');
+insert into curso(curso_id, nombre_curso)
+values(10,'Iso 27001 Lead Auditor');
+insert into curso(curso_id, nombre_curso)
+values(11,'Iso 27001 Foundation');
+insert into curso(curso_id, nombre_curso)
+values(12,'Iso 22301 Auditor');
+insert into curso(curso_id, nombre_curso)
+values(13,'Iso 22301 Lead Auditor');
+insert into curso(curso_id, nombre_curso)
+values(14,'Iso 22301 Foundation');
+insert into curso(curso_id, nombre_curso)
+values(15,'Iso 20000 Auditor');
+insert into curso(curso_id, nombre_curso)
+values(16,'Iso 20000 Lead Auditor');
+insert into curso(curso_id, nombre_curso)
+values(17,'Iso 20000 Foundation');
+insert into curso(curso_id, nombre_curso)
+values(18,'Cybersecurity');
+insert into curso(curso_id, nombre_curso)
+values(19,'Six Sigma');
+insert into curso(curso_id, nombre_curso)
+values(20,'DevOps Essentials');
+insert into curso(curso_id, nombre_curso)
+values(21,'DevOps Culture');
+insert into curso(curso_id, nombre_curso)
+values(22,'Marketing Digital');
+insert into curso(curso_id, nombre_curso)
+values(23,'Big Data');
+insert into curso(curso_id, nombre_curso)
+values(24,'Design Thinking');
+insert into curso(curso_id, nombre_curso)
+values(25,'Service Desk');
+insert into curso(curso_id, nombre_curso)
+values(26,'Agile Business Owner');
 
-select * from usuario
-
-select * from correlativo
 
 -- FUNCIONES:
 
