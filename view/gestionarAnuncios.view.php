@@ -121,7 +121,7 @@
                         </form>
                     </small>
                     <small>
-                        <form role="form" enctype="multipart/form-data" action="../controller/usuario.actualizar.foto.datos.controller.php" method="post">
+                        <form role="form" enctype="multipart/form-data" action="../controller/anuncio.actualizar.foto.datos.controller.php" method="post">
                         <div class="box-body col-md-offset-1">
                             <div class="modal fade" id="myModalFoto" name="myModalFoto" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
