@@ -1,211 +1,191 @@
 <?php
-require_once 'validar.datos.sesion.view.php';
-//      $dniSesion= $_SESSION["s_doc_id"] ;
-//require_once '../logic/Sesion.class.php';
+    require_once 'validar.datos.sesion.view.php';
+
+    //$_POST["s_usuario"] = $dniSesion;
+    
+   // require_once '../controller/perfil.usuario.leer.datos.controller.php';
+    
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="icon" href="../images/IPEV.jpg">
-        <title> Campus Virtual | Gestionar Anuncios</title>
+        <title> Campus Virtual | Anuncio</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <?php include_once 'estilos.view.php'; ?>
 </head>
-    <style>
-        #modal{
-            padding: 0 0 0 220px;  
-            width: 80% !important;
-        }
-    </style>
-    <body class="hold-transition skin-purple-light sidebar-mini">
-        <!-- Site wrapper -->
-        <div class="wrapper">
 
-            <?php include_once './menu-arriba.admin.view.php'; ?>
+<body class="hold-transition skin-purple-light sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
 
-            <!-- =============================================== -->
+  <?php include_once './menu-arriba.admin.view.php'; ?>
 
-            <!-- Left side column. contains the sidebar -->
-            <?php include_once './menu-izquierda.admin.view.php'; ?>
+  <!-- =============================================== -->
 
-            <!-- =============================================== -->
+  <!-- Left side column. contains the sidebar -->
+  <?php include_once 'menu-izquierda.admin.view.php';?>
 
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
+  <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h3></h3>
                     <ol class="breadcrumb">
                         <li><a href="menu.principal.view.php"><i class="fa fa-dashboard"></i> Inicio</a></li>
-                        <li class="active">Gestionar Anuncios</li>
+                        <li class="active">Gestionar Anuncio</li>
                         <!--<li class="active">User profile</li>-->
                     </ol>
 
 <!--<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><img src="../images/actualizar_2.png"> AGREGAR </button>-->
-                </section>  
-                <!-- Main content -->
+                </section> 
                 <section class="content">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="box box-primary">
                                 <section class="content-header">
-                                    <h3>Preguntas</h3>
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal2" id="btnagregar2"><i class="fa fa-question-circle"></i> Agregar nueva pregunta</button>
+                                    <h3>Anuncio</h3>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" id="btnagregar"><i class="fa fa-bullhorn"></i> Agregar nuevo Anuncio</button>
                                 </section>
                                 <div class="box-body">
-                                    <div id="listado2"></div>
+                                    <div id="listado" class="table table-responsive"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- INICIO del formulario modal -->
                     <small>
-                        <form id="frmgrabar2">
-                            <div class="modal fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <form id="frmgrabar">
+                            <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="titulomodal2">Agregar nuevo titulo</h4>
+                                            <h4 class="modal-title" id="titulomodal">Crear Convocatoria</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <p>
                                                         <input type="hidden" value="" id="txtTipoOperacion" name="txtTipoOperacion">
-                                                        Código <input type="text" 
+                                                        Código<input type="text" 
                                                                       name="txtCodigo" 
                                                                       id="txtCodigo" 
-                                                                      class="form-control input-sm text-bold" 
-                                                                      readonly="">
+                                                                      class="form-control input-sm"
+                                                                      readonly="true">
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <p>
+                                                        Título del Anuncio (*) <input type="text" class="form-control" id="txtTitulo" style="font-weight:normal; " name="txtTitulo" required="" autofocus="">
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-3">
                                                     <p>
-                                                        Código Prueba
-                                                        <select required="" name="cboPruebaa" id="cboPruebaa" class="form-control input-sm">
-
-                                                        </select>
-                                                    </p>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <p>
-                                                        Número de pregunta
-                                                        <select required="" name="cboNumPregunta" id="cboNumPregunta" class="form-control input-sm">
+                                                        Tipo de anuncio (*)
+                                                        <select size="1" style="font-weight:normal;" id="tipoAnuncio" name="tipoAnuncio" class="form-control has-feedback-left" required> 
                                                             <option></option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                            <option value="8">8</option>
-                                                            <option value="9">9</option>
-                                                            <option value="10">10</option>
-                                                            <option value="11">11</option>
-                                                            <option value="12">12</option>
-                                                            <option value="13">13</option>
-                                                            <option value="14">14</option>
-                                                            <option value="15">15</option>
-                                                            <option value="16">16</option>
-                                                            <option value="17">17</option>
-                                                            <option value="18">18</option>
-                                                            <option value="19">19</option>
-                                                            <option value="20">20</option>
+                                                            <option value="Informativo">Informativo</option>
+                                                            <option value="Celebraciones">Celebraciones</option>
+                                                            <option value="Pago">Pago</option>
                                                         </select>
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <p>
+                                                        Descripción (*)
+                                                        <textarea type="text" class="form-control" id="txtDescripcion" style="font-weight:normal; " name="txtDescripcion" required="" rows="8">
+
+                                                        </textarea>
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <div class="box box-info">
-                                                        <div class="box-header">
-                                                            <h3 class="box-title">Pregunta
-                                                                <small>Utilice el editor de texto</small>
-                                                            </h3>
-                                                            <!-- tools box -->
-                                                            <div class="pull-right box-tools">
-                                                                <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
-                                                                        title="Collapse">
-                                                                    <i class="fa fa-minus"></i></button>
-                                                                <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
-                                                                        title="Remove">
-                                                                    <i class="fa fa-times"></i></button>
-                                                            </div>
-                                                            <!-- /. tools -->
-                                                        </div>
-                                                        <!-- /.box-header -->
-                                                        <div class="box-body pad">
-
-                                                            <textarea id="editor1" 
-                                                                      name="editor1" 
-                                                                      class = "ckeditor">
-
-                                                            </textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    <p>
-                                                        Respuesta Correcta
-                                                        <select required="" name="cboRespuesta" id="cboRespuesta" class="form-control input-sm">
-                                                            <option>-</option>
-                                                            <option value="a">a</option>
-                                                            <option value="b">b</option>
-                                                            <option value="c">c</option>
-                                                            <option value="d">d</option>
-                                                            <option value="e">e</option>
-                                                        </select>
-                                                    </p>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <p>
-                                                        Puntaje Correcto
-                                                        <select required="" name="cboPuntajeCorrecto" id="cboPuntajeCorrecto" class="form-control input-sm">
-                                                            <option> - </option>
-                                                            <option value="0.0">0</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-
-                                                        </select>
-                                                    </p>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <p>
-                                                        Puntaje Incorrecto
-                                                        <select required="" name="cboPuntajeIncorrecto" id="cboPuntajeIncorrecto" class="form-control input-sm">
-                                                            <option> - </option>
-                                                            <option value="0.0">0</option>
-                                                            <option value="1">-1</option>
-                                                            <option value="2">-2</option>
-                                                            <option value="3">-3</option>
-
-                                                        </select>
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            
+                                                
+                                            
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-warning" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrar2"><i class="fa fa-close"></i> Cerrar</button>
+                                            <button type="submit" class="btn btn-primary" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrar"><i class="fa fa-close"></i> Cerrar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </small>
-                    <!-- FIN del formulario modal -->
+                    <small>
+                        <form role="form" enctype="multipart/form-data" action="../controller/usuario.actualizar.foto.datos.controller.php" method="post">
+                        <div class="box-body col-md-offset-1">
+                            <div class="modal fade" id="myModalFoto" name="myModalFoto" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="titulomodal">Subir Foto</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <p>
+                                                        Documento (*) <input type="text" class="form-control has-feedback-left" style="font-weight:normal;"
+                                                                       id="txtDocID" name="txtDocID" 
+                                                                       required="" autofocus="" 
+                                                                       maxlength="8" readonly="true"
+                                                                       onkeypress="ValidaSoloNumeros();">
+                                                    </p>
+                                                </div>
+                                            </div><br/><br/><br/><br/>
+                                            <div class="row">
+                                                <div class="col-xs-6 col-md-offset-3">
+                                                    <section id="file-preview-zone" name="file-preview-zone"
+                                                    class="card-body d-flex justify-content-between align-items-center thumbnail">
 
+                                                            
+                                                       
+                                                    
+
+                                                    </section>  
+                                                </div>   
+                                            </div>   
+                                            <div class="row">
+                                                <div class="col-xs-8 col-md-offset-2">
+                                                    <div id="foto_id" name="foto_id"
+                                                    class="card-body d-flex justify-content-between align-items-center input-group">
+                                                        <label class="input-group-btn">
+                                                            <span class="btn btn-info">
+                                                               <i class="fa fa-image"></i><input type="file" style="display: none;" multiple accept="image/png,image/jpeg" id="file-upload" name="file-upload">
+                                                            </span>
+                                                        </label>
+                                                        <input type="text" id="p_foto" name="p_foto" class="form-control" readonly>
+                                                    </div>
+                                                    <span class="help-block">
+                                                    Seleccione una foto 
+                                                </span>
+                                                </div>
+                                                
+                                            </div>
+                                       
+                                    
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary" aria-hidden="true"><i class="fa fa-save"></i> Guardar Foto</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrar"><i class="fa fa-close"></i> Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          </div>
+                        </form>
+                    </small>
                 </section>
-
+                <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
 
@@ -218,48 +198,65 @@ require_once 'validar.datos.sesion.view.php';
         </div>
         <!-- ./wrapper -->
         <?php include_once 'scripts.view.php'; ?>
-<!--        <script>
-            $(function () {
+        
+        <script src="js/gestionarAnuncio.js" type="text/javascript"></script>
 
-                // We can attach the `fileselect` event to all file inputs on the page
-                $(document).on('change', ':file', function () {
-                    var input = $(this),
-                            numFiles = input.get(0).files ? input.get(0).files.length : 1,
-                            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-                    input.trigger('fileselect', [numFiles, label]);
-                });
+        <?php include_once 'scripts.view.php'; ?>
 
-                // We can watch for our custom `fileselect` event like this
-                $(document).ready(function () {
-                    $(':file').on('fileselect', function (event, numFiles, label) {
-
-                        var input = $(this).parents('.input-group').find(':text'),
-                                log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-                        if (input.length) {
-                            input.val(log);
-                        } else {
-                            if (log)
-                                alert(log);
-                        }
-
-                    });
-                });
-
-            });
-        </script>  -->
         <script>
-            $(function () {
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace('editor1')editor1
-                //bootstrap WYSIHTML5 - text editor
-                $('.textarea').wysihtml5()
-            })
-        </script>
-                <!--<script src="js/convocatoria.js" type="text/javascript"></script>-->
-        <script src="js/prueba.js" type="text/javascript"></script>
-        <script src="js/puesto.js" type="text/javascript"></script>
-        <script src="js/gestionar.prueba.admin.js" type="text/javascript"></script>
+            $(function() {
+
+          // We can attach the `fileselect` event to all file inputs on the page
+          $(document).on('change', ':file', function() {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+          });
+
+          // We can watch for our custom `fileselect` event like this
+          $(document).ready( function() {
+              $(':file').on('fileselect', function(event, numFiles, label) {
+
+                  var input = $(this).parents('.input-group').find(':text'),
+                      log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                  if( input.length ) {
+                      input.val(log);
+                  } else {
+                      if( log ) alert(log);
+                  }
+
+              });
+          });
+
+        });
+        </script>  
+        <script>
+            function readFile(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+         
+                    reader.onload = function (e) {
+                        var filePreview = document.createElement('img');
+                        filePreview.id = 'file-preview';
+                        //e.target.result contents the base64 data from the image uploaded
+                        filePreview.src = e.target.result;
+                        console.log(e.target.result);
+         
+                        var previewZone = document.getElementById('file-preview-zone');
+                        previewZone.appendChild(filePreview);
+                    }
+         
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+         
+            var fileUpload = document.getElementById('file-upload');
+            fileUpload.onchange = function (e) {
+                readFile(e.srcElement);
+            }
+         
+        </script>  
     </body>
 </html>

@@ -374,6 +374,12 @@ values('prueba',0);
 insert into correlativo(tabla, numero)
 values('pregunta',0);
 
+insert into correlativo(tabla, numero)
+values('anuncio',1);
+
+insert into correlativo(tabla, numero)
+values('detalle_usuario_curso_evento',0);
+
 select * from correlativo
 
 -- Rol
@@ -482,6 +488,10 @@ values(25,'Service Desk');
 insert into curso(curso_id, nombre_curso)
 values(26,'Agile Business Owner');
 
+-- ANUNCIO
+
+insert into anuncio(anuncio_id,titulo_evento,descripcion_evento,tipo_anuncio)
+values(1, 'Big Data 2020','jajknakjnkajnksnkanskas','pago');
 
 -- FUNCIONES:
 
