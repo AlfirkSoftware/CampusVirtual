@@ -103,11 +103,11 @@ class Anuncio extends Conexion {
         try {
             $sql = "
                     select 
-                        doc_id
+                        anuncio_id
                     from 
-                        credenciales_acceso
+                        anuncio
                     where 
-                        doc_id = :p_anuncio_id
+                        anuncio_id = :p_anuncio_id;
 
                 ";
             

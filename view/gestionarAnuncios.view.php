@@ -134,8 +134,8 @@
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <p>
-                                                        Documento (*) <input type="text" class="form-control has-feedback-left" style="font-weight:normal;"
-                                                                       id="txtDocID" name="txtDocID" 
+                                                        código (*) <input type="text" class="form-control has-feedback-left" style="font-weight:normal;"
+                                                                       id="txtCodigoA" name="txtCodigoA" 
                                                                        required="" autofocus="" 
                                                                        maxlength="8" readonly="true"
                                                                        onkeypress="ValidaSoloNumeros();">

@@ -93,19 +93,19 @@ function leerDatos(codAnuncio) {
     });
 }
 
-function leerFoto(codIdentidad) {
+function leerFoto(codAnuncio) {
     $.post
             (
-                    "../controller/gestionarFotoUsuario.leer.datos.controller.php",
+                    "../controller/gestionarFotoAnuncio.leer.datos.controller.php",
                     {
-                        p_doc_ident: codIdentidad
+                        p_doc_anuncio: codAnuncio
                     }
             ).done(function (resultado) {
         var jsonResultado = resultado;
         if (jsonResultado.estado === 200) {
             $("#txtTipoOperacion").val("editar");
             //$("#txtCodigo").val(jsonResultado.datos.codigo_usuario);
-            $("#txtDocID").val(jsonResultado.datos.doc_id);
+            $("#txtCodigoA").val(jsonResultado.datos.anuncio_id);
             $("#p_foto").val("");
             $("#file-preview-zone").val("view");
         
