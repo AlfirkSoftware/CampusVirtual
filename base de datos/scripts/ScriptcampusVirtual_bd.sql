@@ -493,6 +493,21 @@ values(26,'Agile Business Owner');
 insert into anuncio(anuncio_id,titulo_evento,descripcion_evento,tipo_anuncio)
 values(1, 'Big Data 2020','jajknakjnkajnksnkanskas','pago');
 
+-- PREGUNTAS
+
+insert into 
+	prueba
+	(
+		prueba_id,
+		cant_preguntas,
+		tiempo_prueba,
+		puntaje_aprobacion,
+		instrucciones,
+		curso_id
+	)
+values(1,40,'15m',60, 'Responda correctamente y despacio.', 1);
+
+
 -- FUNCIONES:
 
 -- f_generar_correlativo(character varying)
