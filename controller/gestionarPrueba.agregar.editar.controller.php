@@ -29,19 +29,17 @@ try {
     $CantPregunta  = $_POST["p_cantPregunta"];
     $Tiempo        = $_POST["p_tiempo"];
     $Puntaje       = $_POST["p_puntaje"];
-    $Instrucciones = $_POST["p_instrucciones"];
-    //$tipoOperacion = $_POST["p_tipo_ope"];
-
+    $Instrucciones = $_POST["p_instrucciones"]; 
     $objPrueba = new Prueba();
 
-    
         $objPrueba->setCurso_id($Curso_id);
         $objPrueba->setCantPregunta($CantPregunta);
         $objPrueba->setTiempo($Tiempo);
         $objPrueba->setPuntaje($Puntaje);
         $objPrueba->setInstrucciones($Instrucciones);
         $resultado = $objPrueba->agregar();
-        if ($resultado) {
+        if ($resultado) 
+        {
             Helper::imprimeJSON(200, "Agregado correctamente", "");
         }
     

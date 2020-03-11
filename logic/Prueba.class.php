@@ -74,22 +74,15 @@ class Prueba extends Conexion {
 
                 /* Insertar en la tabla laboratorio */
                 $sql = "
-                    INSERT INTO prueba(
-                                            prueba_id, 
-                                            cant_preguntas,
-                                            tiempo_prueba,
-                                            puntaje_aprobacion,
-                                            instrucciones,
-                                            curso_id
-                                            )
-                    VALUES (
-                            :p_prueba_id, 
-                            :p_cant_preguntas,
-                            :p_tiempo_prueba,
-                            :p_puntaje_aprobacion,
-                            :p_instrucciones,
-                            :p_curso_id
-                            );
+                    select * from fn_registrarEditarPrueba
+                                    (
+                                        :p_prueba_id,
+                                        :p_cant_preguntas,
+                                        :p_tiempo_prueba,
+                                        :p_puntaje_aprobacion,
+                                        :p_instrucciones,
+                                        :p_curso_id
+                                    );
 
                     ";
                 $sentencia = $this->dblink->prepare($sql);
@@ -104,14 +97,14 @@ class Prueba extends Conexion {
 
                 /* Actualizar el correlativo */
                 $sql = "update correlativo set numero = numero + 1 
-                    where tabla='curso'";
+                    where tabla='prueba'";
                 $sentencia = $this->dblink->prepare($sql);
                 $sentencia->execute();
                 /* Actualizar el correlativo */
                 $this->dblink->commit();
                 return true;
             } else {
-                throw new Exception("No se ha configurado el correlativo para la tabla curso");
+                throw new Exception("No se ha configurado el correlativo para la tabla prueba");
             }
         } catch (Exception $exc) {
             $this->dblink->rollBack();
@@ -153,15 +146,21 @@ class Prueba extends Conexion {
         try {
             $sql = "
                 update 
-                    curso 
+                    prueba 
                 set  
-                    nombre_curso = :p_nombre_curso
+                    cant_preguntas = :p_nombre_curso,
+                    tiempo_prueba = :p_nombre_curso,
+                    puntaje_aprobacion = :p_nombre_curso,
+                    instrucciones = :p_nombre_curso
                 where
-                    curso_id = :p_curso_id
+                    prueba_id = :p_prueba_id
                 ";
             $sentencia = $this->dblink->prepare($sql);
-            $sentencia->bindParam(":p_nombre_curso", $this->getNombre_curso());
-            $sentencia->bindParam(":p_curso_id", $this->getCodigo_curso());
+            $sentencia->bindParam(":p_prueba_id", $this->getPrueba_id());
+            $sentencia->bindParam(":p_cant_preguntas", $this->getCantPregunta());
+            $sentencia->bindParam(":p_tiempo_prueba", $this->getTiempo());
+            $sentencia->bindParam(":p_puntaje_aprobacion", $this->getPuntaje());
+            $sentencia->bindParam(":p_instrucciones", $this->getInstrucciones());
             $sentencia->execute();
             return true;
         } catch (Exception $exc) {

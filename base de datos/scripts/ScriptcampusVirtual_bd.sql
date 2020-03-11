@@ -653,12 +653,74 @@ values(1,40,'15m',60, 'Responda correctamente y despacio.', 1);
  end
  $$ language plpgsql;
  
+-- función para registrar o editar prueba
+
+CREATE OR REPLACE FUNCTION fn_registrarEditarPrueba
+						(
+							p_prueba_id integer, 
+							p_cant_preguntas character varying(4),
+							p_tiempo_prueba character varying(50), 
+							p_puntaje_aprobacion integer, 
+							p_instrucciones character varying(50),
+							p_curso_id integer
+						)returns void as
+$$
+begin
+						IF 
+							(select count(prueba_id) from prueba where curso_id = p_curso_id) = 1 then
+							
+							update prueba
+							set 
+								
+								cant_preguntas 	     = p_cant_preguntas,
+								tiempo_prueba		 = p_tiempo_prueba,
+								puntaje_aprobacion   = p_puntaje_aprobacion,
+								instrucciones		 = p_instrucciones
+							where
+								curso_id = p_curso_id;
+						ELSE
+							
+							insert into prueba(
+												prueba_id,
+												cant_preguntas, 
+												tiempo_prueba,
+												puntaje_aprobacion,
+												instrucciones,
+												curso_id
+											)
+							values(
+									p_prueba_id,
+									p_cant_preguntas, 
+									p_tiempo_prueba,
+									p_puntaje_aprobacion,
+									p_instrucciones,
+									p_curso_id
+								  );
+								  
+						END if;
+
+end
+$$ language plpgsql;
+ 
 select 
 	* 
 from 
-	curso c inner join detalle_curso_evento d
-on
-	c.curso_id = d.curso_id inner join evento e
-on
-	d.evento_id = e.evento_id
+	prueba
+	
+	
+	
+	
+	
+	
+	
+	
+	select * from fn_registrarEditarPrueba
+                                    (
+                                        1,
+                                        '45',
+                                        '45',
+                                        '45',
+                                        'hawei p300',
+                                        1
+                                    );
 	

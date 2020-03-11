@@ -127,8 +127,8 @@ require_once 'validar.datos.sesion.view.php';
                                                     <p>
                                                         <input type="hidden" value="" id="txtTipoOperacionPrueba" name="txtTipoOperacionPrueba">
                                                         Código <input type="text" 
-                                                                      name="txtrueba_id" 
-                                                                      id="txtrueba_id" 
+                                                                      name="txtPrueba_id" 
+                                                                      id="txtPrueba_id" 
                                                                       class="form-control input-sm" 
                                                                       readonly="">
                                                     </p>

@@ -155,16 +155,13 @@ $("#frmgrabarPrueba").submit(function (event) {
             function (isConfirm) {
 
                 if (isConfirm) { //el usuario hizo clic en el boton SI     
-                    //procedo a grabar
-                    //Llamar al controlador para grabar los datos
-
-                    //var codLab = ($("#txtTipoOperacion").val()==="agregar")? 
-
-                   // var codPrueba = "";
-                     //   codPrueba = "0";
-                  /*  } else {
-                       codPrueba = $("#txtCodigo").val();
-                    }*/
+                   /* var codPrueba = "";
+                    if ($("#txtTipoOperacionPrueba").val() === "agregar") {
+                        codPrueba = "0";
+                    } else {
+                        codPrueba = $("#txtPrueba_id").val();
+                    }
+                    */
                     $.post(
                             "../controller/gestionarPrueba.agregar.editar.controller.php",
                             {
@@ -172,9 +169,9 @@ $("#frmgrabarPrueba").submit(function (event) {
                                 p_cantPregunta: $("#textCant_preguntas").val(),
                                 p_tiempo: $("#textTiempo").val(),
                                 p_puntaje: $("#txtPuntaje").val(),
-                                p_instrucciones: $("#txtInstrucciones").val()
-                               // p_tipo_ope: $("#txtTipoOperacion").val(),
-                               // p_codigo_prueba: codPrueba
+                                p_instrucciones: $("#txtInstrucciones").val(),
+                                //p_tipo_ope: $("#txtTipoOperacion").val(),
+                                //p_codigo_prueba: codPrueba
                             }
                     ).done(function (resultado) {
                         var datosJSON = resultado;
@@ -200,13 +197,13 @@ $("#frmgrabarPrueba").submit(function (event) {
 
 $("#frmgrabarPrueba").click(function () {
     $("#txtTipoOperacion").val("agregar");
-  
+   
 $("#titulomodal").html("Agregar nueva prueba");
 });
 
 
 $("#myModalPrueba").on("shown.bs.modal", function () {
-  //  $("#textCant_preguntas").focus();
+   // $("#txtInstrucciones").focus();
 });
 
 function leerDatos(codCurso) {
@@ -240,7 +237,7 @@ function leerDatosPrueba(codCurso) {
             ).done(function (resultado) {
         var jsonResultado = resultado;
         if (jsonResultado.estado === 200) {
-            $("#txtTipoOperacion").val("editar");
+            $("#txtTipoOperacionPrueba").val("editar");
             $("#textCursoId").val(jsonResultado.datos.curso_id);
             $("#textCant_preguntas").val(jsonResultado.datos.cant_preguntas);
             $("#textTiempo").val(jsonResultado.datos.tiempo_prueba);
