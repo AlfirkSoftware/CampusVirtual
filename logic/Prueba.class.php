@@ -70,7 +70,7 @@ class Prueba extends Conexion {
             if ($sentencia->rowCount()) {
                 $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
                 $nuevoCodigo = $resultado["nc"];
-                $this->setCodigo_curso($nuevoCodigo);
+                $this->setPrueba_id($nuevoCodigo);
 
                 /* Insertar en la tabla laboratorio */
                 $sql = "

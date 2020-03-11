@@ -160,12 +160,11 @@ $("#frmgrabarPrueba").submit(function (event) {
 
                     //var codLab = ($("#txtTipoOperacion").val()==="agregar")? 
 
-                    var codPrueba = "";
-                    if ($("#txtTipoOperacion").val() === "agregar") {
-                        codPrueba = "0";
-                    } else {
-                        codPrueba = $("#txtCodigo").val();
-                    }
+                   // var codPrueba = "";
+                     //   codPrueba = "0";
+                  /*  } else {
+                       codPrueba = $("#txtCodigo").val();
+                    }*/
                     $.post(
                             "../controller/gestionarPrueba.agregar.editar.controller.php",
                             {
@@ -173,9 +172,9 @@ $("#frmgrabarPrueba").submit(function (event) {
                                 p_cantPregunta: $("#textCant_preguntas").val(),
                                 p_tiempo: $("#textTiempo").val(),
                                 p_puntaje: $("#txtPuntaje").val(),
-                                p_instrucciones: $("#txtInstrucciones").val(),
-                                p_tipo_ope: $("#txtTipoOperacion").val(),
-                                p_codigo_prueba: codPrueba
+                                p_instrucciones: $("#txtInstrucciones").val()
+                               // p_tipo_ope: $("#txtTipoOperacion").val(),
+                               // p_codigo_prueba: codPrueba
                             }
                     ).done(function (resultado) {
                         var datosJSON = resultado;
@@ -237,11 +236,8 @@ function ObtenerCursoID(codCurso) {
                         p_textId        = "#textCursoId";
                         p_seleccione    = "seleccione";
 
-                        cargarCbCodigoCurso(p_curso_id, p_textId, p_seleccione);
-       
+                        cargarCbCodigoCurso(p_curso_id, p_textId, p_seleccione);       
 }
-
-
 
 function eliminar(codCurso) {
     swal({

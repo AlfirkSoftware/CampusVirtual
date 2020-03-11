@@ -125,7 +125,7 @@ require_once 'validar.datos.sesion.view.php';
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <p>
-                                                        <input type="hidden" value="" id="txtTipoOperacion" name="txtTipoOperacion">
+                                                        <input type="hidden" value="" id="txtTipoOperacionPrueba" name="txtTipoOperacionPrueba">
                                                         Código <input type="text" 
                                                                       name="txtrueba_id" 
                                                                       id="txtrueba_id" 
