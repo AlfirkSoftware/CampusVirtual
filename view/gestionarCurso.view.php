@@ -119,11 +119,11 @@ require_once 'validar.datos.sesion.view.php';
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="titulomodal">Registrar curso</h4>
+                                            <h4 class="modal-title" id="titulomodal">Registrar prueba</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-xs-2">
+                                                <div class="col-xs-3">
                                                     <p>
                                                         <input type="hidden" value="" id="txtTipoOperacion" name="txtTipoOperacion">
                                                         Código <input type="text" 
@@ -133,19 +133,19 @@ require_once 'validar.datos.sesion.view.php';
                                                                       readonly="">
                                                     </p>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-2">
+                                                <div class="col-xs-6">
                                                     <p>
-                                                        Curso ID
+                                                        Curso
                                                         <select size="1" style="font-weight:normal;" id="textCursoId" name="textCursoId" class="form-control has-feedback-left" required>
                                                             <option>-</option>
                                                         </select>
                                                     </p>
                                                 </div>
+                                            </div>
+                                            <div class="row">
                                                 <div class="col-xs-3">
                                                     <p>
-                                                        Num. Preguntas
+                                                        #Preguntas
                                                         <select size="1" style="font-weight:normal;" id="textCant_preguntas" name="textCant_preguntas" class="form-control has-feedback-left" required>
                                                             <option>-</option>
                                                             <option value="10">10</option>
@@ -203,7 +203,7 @@ require_once 'validar.datos.sesion.view.php';
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-xs-11">
+                                                <div class="col-xs-9">
                                                     <p>
                                                         Instrucciones (*)
                                                         <textarea type="text" class="form-control" id="txtInstrucciones" style="font-weight:normal; " name="txtInstrucciones" required="" rows="8">
@@ -267,7 +267,7 @@ require_once 'validar.datos.sesion.view.php';
             });
         </script>    
        <script src="js/gestionarCurso.js" type="text/javascript"></script>
-       <script src="js/comboCurso.js" type="text/javascript"></script>
+       <script src="js/cbCodigo.js" type="text/javascript"></script>
        <!--
         <script src="js/cbCodigo.js" type="text/javascript"></script>
         <script src="js/convocatoria.js" type="text/javascript"></script>

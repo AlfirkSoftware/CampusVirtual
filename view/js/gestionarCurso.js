@@ -1,5 +1,6 @@
-$(document).ready(function () {
 
+$(document).ready(function () {
+    //cargarCbCodigoCurso(p_curso_id, p_textId, p_seleccione);
     listar();
 });
 
@@ -33,10 +34,10 @@ function listar() {
                 html += '<td align="center">';
                 html += '<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal" onclick="leerDatos(' + item.curso_id + ')"><i class="fa fa-pencil"></i></button>';
                 html += '&nbsp;&nbsp;';
-                html += '<button type="button" class="btn btn-danger btn-xs" onclick="eliminar(' + item.curso_id + ')"><i class="fa fa-close"></i></button>';
+                html += '<button type="button" class="btn btn-danger btn-xs" onclick="eliminar(' + item.curso_id + '"#textCursoId" '+'"seleccione"'+')"><i class="fa fa-close"></i></button>';
                 html += '</td>';
                 html += '<td align="center">';
-                html += '<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalPrueba" onclick="RegistrarPrueba(' + item.curso_id + ')"><i class="fa fa-save"></i></button>';
+                html += '<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalPrueba" onclick="ObtenerCursoID(' + item.curso_id + ')"><i class="fa fa-save"></i></button>';
                 html += '&nbsp;&nbsp;';
                 html += '<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalPrueba" onclick="EditarPrueba(' + item.curso_id + ')"><i class="fa fa-pencil"></i></button>';
                 html += '</td>';
@@ -229,6 +230,17 @@ function leerDatos(codCurso) {
         swal("Error", datosJSON.mensaje, "error");
     });
 }
+
+function ObtenerCursoID(codCurso) {
+    
+                        p_curso_id      = codCurso;
+                        p_textId        = "#textCursoId";
+                        p_seleccione    = "seleccione";
+
+                        cargarCbCodigoCurso(p_curso_id, p_textId, p_seleccione);
+       
+}
+
 
 
 function eliminar(codCurso) {
