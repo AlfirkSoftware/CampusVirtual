@@ -124,8 +124,20 @@ class Prueba extends Conexion {
     public function leerDatos($p_codigoCurso) {
         try {
             $sql = "
-                    select * from curso 
-                    where curso_id = :p_codigo_curso
+                    select 
+                        p.prueba_id,
+                        p.cant_preguntas,
+                        p.tiempo_prueba,
+                        p.puntaje_aprobacion,
+                        p.instrucciones,
+                        p.curso_id,
+                        c.nombre_curso
+                    from 
+                        prueba p inner join curso c
+                    on
+                        c.curso_id = p.curso_id
+                    where 
+                        p.curso_id = :p_codigo_curso
                 ";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->bindParam(":p_codigo_curso", $p_codigoCurso);

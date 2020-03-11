@@ -138,6 +138,33 @@ require_once 'validar.datos.sesion.view.php';
                                                         Curso
                                                         <select size="1" style="font-weight:normal;" id="textCursoId" name="textCursoId" class="form-control has-feedback-left" required>
                                                             <option>-</option>
+                                                            <option value="1">Agile Coach</option>
+                                                            <option value="2">Innovation Management</option>
+                                                            <option value="3">Kanban</option>
+                                                            <option value="4">Scrum Master</option>
+                                                            <option value="5">Scrum Foundation</option>
+                                                            <option value="6">Scrum Developer</option>
+                                                            <option value="7">Scrum Advanced</option>
+                                                            <option value="8">Scrum Product Owner</option>
+                                                            <option value="9">Iso 27001 Auditor</option>
+                                                            <option value="0">Iso 27001 Lead Auditor</option>
+                                                            <option value="11">Iso 27001 Foundation</option>
+                                                            <option value="12">Iso 22301 Auditor</option>
+                                                            <option value="13">Iso 22301 Lead Auditor</option>
+                                                            <option value="14">Iso 22301 Foundation</option>
+                                                            <option value="15">Iso 20000 Auditor</option>
+                                                            <option value="16">Iso 20000 Lead Auditor</option>
+                                                            <option value="17">Iso 20000 Foundation</option>
+                                                            <option value="18">Cybersecurity</option>
+                                                            <option value="19">Six Sigma</option>
+                                                            <option value="20">DevOps Essentials</option>
+                                                            <option value="21">DevOps Culture</option>
+                                                            <option value="22">Marketing Digital</option>
+                                                            <option value="23">Big Data</option>
+                                                            <option value="24">Design Thinking</option>
+                                                            <option value="25">Service Desk</option>
+                                                            <option value="26">Agile Business Owner</option>
+
                                                         </select>
                                                     </p>
                                                 </div>
@@ -215,7 +242,7 @@ require_once 'validar.datos.sesion.view.php';
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-warning" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrar"><i class="fa fa-close"></i> Cerrar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrarP"><i class="fa fa-close"></i> Cerrar</button>
                                         </div>
                                     </div>
                                 </div>
