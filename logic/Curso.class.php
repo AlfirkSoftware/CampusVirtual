@@ -133,10 +133,7 @@ class Curso extends Conexion {
     public function eliminar() {
         try {
             $sql = "
-                delete from 
-                    curso 
-                where
-                    curso_id = :p_curso_id
+                select * from fn_eliminarCursoPruebaPregunta(:p_curso_id);
                 ";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->bindParam(":p_curso_id", $this->getCodigo_curso());

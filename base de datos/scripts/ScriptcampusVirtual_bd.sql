@@ -705,9 +705,65 @@ $$ language plpgsql;
 select 
 	* 
 from 
-	prueba
+	pregunta
+declare
+  -- respCandidato integer;
+  -- respPregunta integer;
+  puntaje_correcto_candidato double precision;
+  puntaje_incorrecto_candidato double precision;
+  numero_pregunta_candidato character varying(5);	
+-- Función para eliminar un curso, prueba y pregunta
+
+CREATE OR REPLACE FUNCTION fn_eliminarCursoPruebaPregunta
+								(
+									p_curso_id integer
+									
+								)returns void as
+
+$$
+declare
 	
+	p_prueba_id integer;
+	p_pregunta_id integer;
 	
+begin
+			-- Obtenemos el código de la prueba que pertenece a un curso y así para poder eliminarlo
+				select 
+					p.prueba_id into p_prueba_id
+				from 
+					curso c inner join prueba p
+				on 
+					c.curso_id = p.curso_id
+				where 
+					c.curso_id = p_curso_id;
+			
+			-- Obtenemos el código de la pregunta que pertenece a una prueba y así poder eliminarlo
+				select 
+					r.pregunta_id into p_pregunta_id
+				from 
+					prueba p inner join pregunta r
+				on 
+					r.prueba_id = p_prueba_id
+				where 
+					r.prueba_id = p_prueba_id;
+					
+			-- Eliminamos:
+			-- pregunta
+			
+				delete from pregunta
+				where pregunta_id = p_pregunta_id;
+			
+			-- prueba
+			
+				delete from prueba
+				where prueba_id = p_prueba_id;
+				
+			-- curso
+			
+				delete from curso
+				where curso_id = p_curso_id;
+end
+$$ language plpgsql;
 	
 	
 	
