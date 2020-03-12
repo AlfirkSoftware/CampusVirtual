@@ -23,6 +23,12 @@ require_once 'validar.datos.sesion.view.php';
             padding: 0 0 0 220px;  
             width: 80% !important;
         }
+        #myModalPreguntaForm{
+            padding: -250px 0 0 0;  
+            width: 100% !important;
+            height: 325px !important;
+        }
+
     </style>
     <body class="hold-transition skin-purple-light sidebar-mini">
         <!-- Site wrapper -->
@@ -129,8 +135,7 @@ require_once 'validar.datos.sesion.view.php';
                                                         Código <input type="text" 
                                                                       name="txtPrueba_id" 
                                                                       id="txtPrueba_id" 
-                                                                      class="form-control input-sm" 
-                                                                      readonly="">
+                                                                      class="form-control input-sm">
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-6">
@@ -250,6 +255,135 @@ require_once 'validar.datos.sesion.view.php';
                         </form>
                     </small>
                 </section>
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-">
+                            <div class="box box-primary">
+                                <section class="content-header">
+                                    <h3>Pregunta</h3>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalPregunta" id="btnagregar"><i class="fa fa-plus"> Agregar nueva pregunta </i></button>
+                                </section>
+                                <div class="box-body">
+                                    <div id="listadoPregunta"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- INICIO del formulario modal -->
+                    <small>
+                        <form id="frmgrabarPregunta">
+                            <div class="modal fade" id="myModalPregunta" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="titulomodal">Registrar pregunta</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <p>
+                                                        <input type="hidden" value="" id="txtTipoOperacionPrueba" name="txtTipoOperacionPrueba">
+                                                        Código <input type="text" 
+                                                                      name="txtPrueba_id" 
+                                                                      id="txtPrueba_id" 
+                                                                      class="form-control input-sm" 
+                                                                      readonly="false">
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <p>
+                                                        Prueba
+                                                        <select size="1" style="font-weight:normal;" id="textCursoIdP" name="textCursoIdP" class="form-control has-feedback-left" required>
+                                                            <option>-</option>
+                                                            <option value="1">Agile Coach</option>
+                                                            <option value="2">Innovation Management</option>
+                                                            <option value="3">Kanban</option>
+                                                            <option value="4">Scrum Master</option>
+                                                            <option value="5">Scrum Foundation</option>
+                                                            <option value="6">Scrum Developer</option>
+                                                            <option value="7">Scrum Advanced</option>
+                                                            <option value="8">Scrum Product Owner</option>
+                                                            <option value="9">Iso 27001 Auditor</option>
+                                                            <option value="0">Iso 27001 Lead Auditor</option>
+                                                            <option value="11">Iso 27001 Foundation</option>
+                                                            <option value="12">Iso 22301 Auditor</option>
+                                                            <option value="13">Iso 22301 Lead Auditor</option>
+                                                            <option value="14">Iso 22301 Foundation</option>
+                                                            <option value="15">Iso 20000 Auditor</option>
+                                                            <option value="16">Iso 20000 Lead Auditor</option>
+                                                            <option value="17">Iso 20000 Foundation</option>
+                                                            <option value="18">Cybersecurity</option>
+                                                            <option value="19">Six Sigma</option>
+                                                            <option value="20">DevOps Essentials</option>
+                                                            <option value="21">DevOps Culture</option>
+                                                            <option value="22">Marketing Digital</option>
+                                                            <option value="23">Big Data</option>
+                                                            <option value="24">Design Thinking</option>
+                                                            <option value="25">Service Desk</option>
+                                                            <option value="26">Agile Business Owner</option>
+
+                                                        </select>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="box box-primary">
+                                                        <div class="box-header">
+                                                            <h3 class="box-title">Pregunta
+                                                                <small>Utilice el editor de texto</small>
+                                                            </h3>
+                                                            <!-- tools box -->
+                                                            <div class="pull-right box-tools">
+                                                                <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
+                                                                        title="Collapse">
+                                                                    <i class="fa fa-minus"></i></button>
+                                                                <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
+                                                                        title="Remove">
+                                                                    <i class="fa fa-times"></i></button>
+                                                            </div>
+                                                            <!-- /. tools -->
+                                                        </div>
+                                                        <!-- /.box-header -->
+                                                        <div class="box-body pad">
+
+                                                            <textarea id="editor1" 
+                                                                      name="editor1" 
+                                                                      class = "ckeditor">
+
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <p>
+                                                        Respuesta
+                                                        <select size="1" style="font-weight:normal;" id="txtPuntaje" name="txtPuntaje" class="form-control has-feedback-left" required>
+                                                            <option>-</option>
+                                                            <option value="a">a</option>
+                                                            <option value="b">b</option>
+                                                            <option value="c">c</option>
+                                                            <option value="d">d</option>
+
+                                                        </select>
+                                                    </p>
+                                                </div>                                      
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-warning" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrarP"><i class="fa fa-close"></i> Cerrar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </small>
+                </section>
+
 
             </div>
             <!-- /.content-wrapper -->

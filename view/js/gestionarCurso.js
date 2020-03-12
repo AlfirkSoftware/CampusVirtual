@@ -1,7 +1,8 @@
 
 $(document).ready(function () {
-    //cargarCbCodigoCurso(p_curso_id, p_textId, p_seleccione);
+    cargarCbCodigoCursoPregunta("#textCursoIdP", "seleccione");
     listar();
+    listarPregunta();
 });
 
 
@@ -40,6 +41,8 @@ function listar() {
                 html += '<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalPrueba" onclick="ObtenerCursoID(' + item.curso_id + ')"><i class="fa fa-save"></i></button>';
                 html += '&nbsp;&nbsp;';
                 html += '<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModalPrueba" onclick="leerDatosPrueba(' + item.curso_id + ')"><i class="fa fa-pencil"></i></button>';
+                html += '&nbsp;&nbsp;';
+                html += '</td>';
                 html += '</td>';
                 html += '</tr>';
             });
@@ -52,6 +55,66 @@ function listar() {
 
 
             $('#tabla-listado').dataTable({
+                "aaSorting": [[1, "asc"]]
+            });
+
+
+
+        } else {
+            //swal("Mensaje del sistema", resultado , "warning");
+        }
+
+    }).fail(function (error) {
+        var datosJSON = $.parseJSON(error.responseText);
+        //swal("Error", datosJSON.mensaje , "error"); 
+    });
+}
+
+function listarPregunta() {
+    $.post
+            (
+                    "../controller/gestionarPregunta.listar.controller.php"
+
+                    ).done(function (resultado) {
+        var datosJSON = resultado;
+
+        if (datosJSON.estado === 200) {
+            var html = "";
+
+            html += '<small>';
+            html += '<table id="tabla-listadoPregunta" class="table table-bordered table-striped">';
+            html += '<thead>';
+            html += '<tr style="background-color: #ededed; height:25px;">';
+            html += '<th style="text-align:center">CODIGO PREGUNTA</th>';
+            html += '<th style="text-align:center">CURSO</th>';
+            html += '<th style="text-align:center">NOMBRE DE la PREGUNTA</th>';
+            html += '<th style="text-align:center">RESPUESTA</th>';
+            html += '<th style="text-align: center">OPCIONES PREGUNTA</th>';
+            html += '</tr>';
+            html += '</thead>';
+            html += '<tbody>';
+            $.each(datosJSON.datos, function (i, item) {
+                html += '<tr>';
+                html += '<td align="center" style="font-weight:normal">' + item.pregunta_id + '</td>';
+                html += '<td align="center" style="font-weight:normal">' + item.nombre_pregunta + '</td>';
+                html += '<td align="center" style="font-weight:normal">' + item.nombre_pregunta + '</td>';
+                html += '<td align="center" style="font-weight:normal">' + item.respuesta + '</td>';
+                html += '<td align="center">';
+                html += '<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal" onclick="leerDatos(' + item.curso_id + ')"><i class="fa fa-pencil"></i></button>';
+                html += '&nbsp;&nbsp;';
+                html += '<button type="button" class="btn btn-danger btn-xs" onclick="eliminarPregunta(' + item.pregunta_id + ')"><i class="fa fa-close"></i></button>';
+                html += '</td>';
+                html += '</tr>';
+            });
+
+            html += '</tbody>';
+            html += '</table>';
+            html += '</small>';
+
+            $("#listadoPregunta").html(html);
+
+
+            $('#tabla-listadoPregunta').dataTable({
                 "aaSorting": [[1, "asc"]]
             });
 
@@ -283,6 +346,42 @@ function eliminar(codCurso) {
                         var datosJSON = resultado;
                         if (datosJSON.estado === 200) { //ok
                             listar();
+                            swal("Exito", datosJSON.mensaje, "success");
+                        }
+
+                    }).fail(function (error) {
+                        var datosJSON = $.parseJSON(error.responseText);
+                        swal("Error", datosJSON.mensaje, "error");
+                    });
+
+                }
+            });
+
+}
+
+function eliminarPregunta(codPregunta) {
+    swal({
+        title: "Confirme",
+        text: "¿Esta seguro de eliminar el registro seleccionado?",
+        showCancelButton: true,
+        confirmButtonColor: '#d93f1f',
+        confirmButtonText: 'Si',
+        cancelButtonText: "No",
+        closeOnConfirm: false,
+        closeOnCancel: true,
+        imageUrl: "../images/eliminar2.png"
+    },
+            function (isConfirm) {
+                if (isConfirm) {
+                    $.post(
+                            "../controller/gestionarPregunta.eliminar.controller.php",
+                            {
+                                p_codigo_pregunta: codPregunta
+                            }
+                    ).done(function (resultado) {
+                        var datosJSON = resultado;
+                        if (datosJSON.estado === 200) { //ok
+                            listarPregunta();
                             swal("Exito", datosJSON.mensaje, "success");
                         }
 

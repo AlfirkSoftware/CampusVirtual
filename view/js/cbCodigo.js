@@ -32,10 +32,10 @@ function cargarCbCodigoCurso(p_curso_id, p_nombreCombo, p_tipo){
     });
 }
 
-function cargarCbCodigoFormacionLaboral(p_nombreCombo, p_tipo){
+function cargarCbCodigoCursoPregunta(p_nombreCombo, p_tipo){
     $.post
     (
-	"../controller/comboCodigoFormacionLaboral.php"
+	"../controller/comboCodigoCursoPregunta.php"
     ).done(function(resultado){
 	var datosJSON = resultado;
 	
@@ -49,7 +49,7 @@ function cargarCbCodigoFormacionLaboral(p_nombreCombo, p_tipo){
 
             
             $.each(datosJSON.datos, function(i,item) {
-                html += '<option value="'+item.codigo_formacion_laboral+'">'+item.nombre_formacion_laboral+'</option>';
+                html += '<option value="'+item.curso_id+'">'+item.nombre_curso+'</option>';
             });
             
             $(p_nombreCombo).html(html);
