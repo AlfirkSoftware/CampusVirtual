@@ -119,26 +119,20 @@ class Pregunta extends Conexion {
         return false;
     }
 
-    public function leerDatos($p_codigoCurso) {
+    public function leerDatos($codPregunta) {
         try {
             $sql = "
-                    select 
-                        p.prueba_id,
-                        p.cant_preguntas,
-                        p.tiempo_prueba,
-                        p.puntaje_aprobacion,
-                        p.instrucciones,
-                        p.curso_id,
-                        c.nombre_curso
+                    select                         
+                            *
                     from 
-                        prueba p inner join curso c
+                        prueba p inner join pregunta r 
                     on
-                        c.curso_id = p.curso_id
-                    where 
-                        p.curso_id = :p_codigo_curso
+                        p.prueba_id = r.prueba_id 
+                    where
+                        r.pregunta_id = :p_pregunta_id;
                 ";
             $sentencia = $this->dblink->prepare($sql);
-            $sentencia->bindParam(":p_codigo_curso", $p_codigoCurso);
+            $sentencia->bindParam(":p_pregunta_id", $codPregunta);
             $sentencia->execute();
             $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
             return $resultado;
@@ -150,22 +144,19 @@ class Pregunta extends Conexion {
     public function editar() {
         try {
             $sql = "
-                update 
-                    prueba 
-                set  
-                    cant_preguntas = :p_nombre_curso,
-                    tiempo_prueba = :p_nombre_curso,
-                    puntaje_aprobacion = :p_nombre_curso,
-                    instrucciones = :p_nombre_curso
-                where
-                    prueba_id = :p_prueba_id
+                select * from fn_registrarPregunta
+                                                (
+                                                    p_pregunta_id,
+                                                    p_nombre_pregunta,
+                                                    p_respuesta,
+                                                    p_curso_id
+                                                )
                 ";
             $sentencia = $this->dblink->prepare($sql);
-            $sentencia->bindParam(":p_prueba_id", $this->getPrueba_id());
-            $sentencia->bindParam(":p_cant_preguntas", $this->getCantPregunta());
-            $sentencia->bindParam(":p_tiempo_prueba", $this->getTiempo());
-            $sentencia->bindParam(":p_puntaje_aprobacion", $this->getPuntaje());
-            $sentencia->bindParam(":p_instrucciones", $this->getInstrucciones());
+            $sentencia->bindParam(":p_pregunta_id", $this->getPregunta_id());
+            $sentencia->bindParam(":p_nombre_pregunta", $this->getNombre_pregunta());
+            $sentencia->bindParam(":p_respuesta", $this->getRespuesta());
+            $sentencia->bindParam(":p_curso_id", $this->getCurso_id());
             $sentencia->execute();
             return true;
         } catch (Exception $exc) {

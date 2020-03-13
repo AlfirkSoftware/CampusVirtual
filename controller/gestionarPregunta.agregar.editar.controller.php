@@ -54,8 +54,12 @@ try {
         }
 
         $codigo = $_POST["p_codigo_pregunta"];
-        $objPregunta->setCodigo_curso($codigo);
-        $objPregunta->setNombre_curso($nombre_curso);
+        $objPregunta->setPregunta_id($codigo);
+        
+        $objPregunta->setNombre_pregunta($Nombre_pregunta);
+        $objPregunta->setRespuesta($Respuesta);
+        $objPregunta->setCurso_id($Curso_id);
+
         $resultado = $objPregunta->editar();
         if ($resultado) {
             Helper::imprimeJSON(200, "Agregado correctamente", "");

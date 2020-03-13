@@ -788,21 +788,34 @@ declare
 begin
 				p_prueba_id = (select  p.prueba_id from curso c inner join prueba p on c.curso_id = p.curso_id where c.curso_id = p_curso_id);
 			
-						INSERT INTO pregunta(
-                                            pregunta_id,
-                                            nombre_pregunta,
-                                            respuesta,
-                                            prueba_id
-                                            )
-						VALUES ( 
-								p_pregunta_id,
-								p_nombre_pregunta,
-								p_respuesta,
-								p_prueba_id
-								);
-
+					IF( select  p.prueba_id from curso c inner join prueba p on c.curso_id = p.curso_id where c.curso_id = p_curso_id) == 0 THEN
+							
+							INSERT INTO pregunta(
+												pregunta_id,
+												nombre_pregunta,
+												respuesta,
+												prueba_id
+												)
+							VALUES ( 
+									p_pregunta_id,
+									p_nombre_pregunta,
+									p_respuesta,
+									p_prueba_id
+									);
+					ELSE
+					
+						UPDATE pregunta
+						SET 
+							nombre_pregunta = p_nombre_pregunta,
+							respuesta = p_respuesta,
+							prueba_id = p_prueba_id
+						WHERE
+							pregunta_id = p_pregunta_id;
+							
+					END if;
 end
 $$ language plpgsql;
+
 	
 	
 	select * from fn_registrarEditarPrueba

@@ -96,11 +96,11 @@ function listarPregunta() {
             $.each(datosJSON.datos, function (i, item) {
                 html += '<tr>';
                 html += '<td align="center" style="font-weight:normal">' + item.pregunta_id + '</td>';
-                html += '<td align="center" style="font-weight:normal">' + item.nombre_pregunta + '</td>';
+                html += '<td align="center" style="font-weight:normal">' + item.nombre_curso + '</td>';
                 html += '<td align="center" style="font-weight:normal">' + item.nombre_pregunta + '</td>';
                 html += '<td align="center" style="font-weight:normal">' + item.respuesta + '</td>';
                 html += '<td align="center">';
-                html += '<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal" onclick="leerDatos(' + item.curso_id + ')"><i class="fa fa-pencil"></i></button>';
+                html += '<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalPregunta" onclick="leerDatosPregunta(' + item.pregunta_id + ')"><i class="fa fa-pencil"></i></button>';
                 html += '&nbsp;&nbsp;';
                 html += '<button type="button" class="btn btn-danger btn-xs" onclick="eliminarPregunta(' + item.pregunta_id + ')"><i class="fa fa-close"></i></button>';
                 html += '</td>';
@@ -379,6 +379,28 @@ function leerDatosPrueba(codCurso) {
             $("#txtPuntaje").val(jsonResultado.datos.puntaje_aprobacion);
             $("#txtInstrucciones").val(jsonResultado.datos.instrucciones);
             $("#titulomodal").html("Modificar datos de la prueba");
+        }
+    }).fail(function (error) {
+        var datosJSON = $.parseJSON(error.responseText);
+        swal("Error", datosJSON.mensaje, "error");
+    });
+}
+
+function leerDatosPregunta(codPregunta) {
+    $.post
+            (
+                    "../controller/gestionarPregunta.leer.datos.controller.php",
+                    {
+                        p_codigo_pregunta: codPregunta
+                    }
+            ).done(function (resultado) {
+        var jsonResultado = resultado;
+        if (jsonResultado.estado === 200) {
+            $("#txtTipoOperacion").val("editar");
+            $("#textCurso_id").val(jsonResultado.datos.curso_id);
+            $(CKEDITOR.instances["editor1"].setData(jsonResultado.datos.nombre_pregunta));
+            $("#txtRespuesta").val(jsonResultado.datos.respuesta);
+            $("#titulomodal").html("Modificar datos de la Pregunta");
         }
     }).fail(function (error) {
         var datosJSON = $.parseJSON(error.responseText);
