@@ -7,7 +7,7 @@ class Pregunta extends Conexion {
     private $Pregunta_id;
     private $Nombre_pregunta;
     private $Respuesta;
-    private $Prueba_id;
+    private $Curso_id;
 
     public function getPregunta_id() {
         return $this->Pregunta_id;
@@ -21,8 +21,8 @@ class Pregunta extends Conexion {
         return $this->Respuesta;
     }
 
-    public function getTPrueba_id() {
-        return $this->Prueba_id;
+    public function getCurso_id() {
+        return $this->Curso_id;
     }
 
     public function setPregunta_id($Pregunta_id) {
@@ -37,8 +37,8 @@ class Pregunta extends Conexion {
         $this->Respuesta = $Respuesta;
     }
 
-    public function setPrueba_id($Prueba_id) {
-        $this->Prueba_id = $Prueba_id;
+    public function setCurso_id($Curso_id) {
+        $this->Curso_id = $Curso_id;
     }
 
     public function listar() {
@@ -49,7 +49,7 @@ class Pregunta extends Conexion {
                         r.nombre_pregunta,
                         r.respuesta,
                         p.prueba_id,
-                        c.curso_id
+                        c.nombre_curso
                     from 
                         curso c inner join prueba p
                     on
@@ -72,48 +72,44 @@ class Pregunta extends Conexion {
         $this->dblink->beginTransaction();
 
         try {
-            $sql = "select * from f_generar_correlativo('prueba') as nc";
+            $sql = "select * from f_generar_correlativo('pregunta') as nc";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();
 
             if ($sentencia->rowCount()) {
                 $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
                 $nuevoCodigo = $resultado["nc"];
-                $this->setPrueba_id($nuevoCodigo);
+                $this->setPregunta_id($nuevoCodigo);
 
                 /* Insertar en la tabla laboratorio */
                 $sql = "
-                    select * from fn_registrarEditarPrueba
-                                    (
-                                        :p_prueba_id,
-                                        :p_cant_preguntas,
-                                        :p_tiempo_prueba,
-                                        :p_puntaje_aprobacion,
-                                        :p_instrucciones,
-                                        :p_curso_id
-                                    );
+                    select * from fn_registrarPregunta
+                                            (
+                                            :p_pregunta_id,
+                                            :p_nombre_pregunta,
+                                            :p_respuesta,
+                                            :p_curso_id
+                                            );
 
                     ";
                 $sentencia = $this->dblink->prepare($sql);
-                $sentencia->bindParam(":p_prueba_id", $this->getPrueba_id());
-                $sentencia->bindParam(":p_cant_preguntas", $this->getCantPregunta());
-                $sentencia->bindParam(":p_tiempo_prueba", $this->getTiempo());
-                $sentencia->bindParam(":p_puntaje_aprobacion", $this->getPuntaje());
-                $sentencia->bindParam(":p_instrucciones", $this->getInstrucciones());
+                $sentencia->bindParam(":p_pregunta_id", $this->getPregunta_id());
+                $sentencia->bindParam(":p_nombre_pregunta", $this->getNombre_pregunta());
+                $sentencia->bindParam(":p_respuesta", $this->getRespuesta());
                 $sentencia->bindParam(":p_curso_id", $this->getCurso_id());
                 $sentencia->execute();
                 /* Insertar en la tabla laboratorio */
 
                 /* Actualizar el correlativo */
                 $sql = "update correlativo set numero = numero + 1 
-                    where tabla='prueba'";
+                    where tabla='pregunta'";
                 $sentencia = $this->dblink->prepare($sql);
                 $sentencia->execute();
                 /* Actualizar el correlativo */
                 $this->dblink->commit();
                 return true;
             } else {
-                throw new Exception("No se ha configurado el correlativo para la tabla prueba");
+                throw new Exception("No se ha configurado el correlativo para la tabla pregunta");
             }
         } catch (Exception $exc) {
             $this->dblink->rollBack();

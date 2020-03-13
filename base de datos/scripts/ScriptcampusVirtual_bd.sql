@@ -765,9 +765,44 @@ begin
 end
 $$ language plpgsql;
 	
+insert into pregunta(pregunta_id,nombre_pregunta,respuesta,prueba_id)
+values(1,'aaaaaaaaa', 'a', 1);
+
+
+select * from pregunta
+
+-- FUNCIÓN REGISTRAR PREGUNTA
+
+CREATE OR REPLACE FUNCTION fn_registrarPregunta
+											(
+											p_pregunta_id integer,
+											p_nombre_pregunta character varying(12000),
+											p_respuesta char(1),
+											p_curso_id integer
+											)returns void as
+$$
+declare
+
+	p_prueba_id integer;
 	
-	
-	
+begin
+				p_prueba_id = (select  p.prueba_id from curso c inner join prueba p on c.curso_id = p.curso_id where c.curso_id = p_curso_id);
+			
+						INSERT INTO pregunta(
+                                            pregunta_id,
+                                            nombre_pregunta,
+                                            respuesta,
+                                            prueba_id
+                                            )
+						VALUES ( 
+								p_pregunta_id,
+								p_nombre_pregunta,
+								p_respuesta,
+								p_prueba_id
+								);
+
+end
+$$ language plpgsql;
 	
 	
 	select * from fn_registrarEditarPrueba

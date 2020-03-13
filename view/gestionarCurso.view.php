@@ -261,7 +261,7 @@ require_once 'validar.datos.sesion.view.php';
                             <div class="box box-primary">
                                 <section class="content-header">
                                     <h3>Pregunta</h3>
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalPregunta" id="btnagregar"><i class="fa fa-plus"> Agregar nueva pregunta </i></button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalPregunta" id="btnagregarPregunta"><i class="fa fa-plus"> Agregar nueva pregunta </i></button>
                                 </section>
                                 <div class="box-body">
                                     <div id="listadoPregunta"></div>
@@ -283,18 +283,18 @@ require_once 'validar.datos.sesion.view.php';
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <p>
-                                                        <input type="hidden" value="" id="txtTipoOperacionPrueba" name="txtTipoOperacionPrueba">
+                                                        <input type="hidden" value="" id="txtTipoOperacionPregunta" name="txtTipoOperacionPregunta">
                                                         Código <input type="text" 
-                                                                      name="txtPrueba_id" 
-                                                                      id="txtPrueba_id" 
+                                                                      name="txtPregunta_id" 
+                                                                      id="txtPregunta_id" 
                                                                       class="form-control input-sm" 
-                                                                      readonly="false">
+                                                                      readonly="">
                                                     </p>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <p>
                                                         Prueba
-                                                        <select size="1" style="font-weight:normal;" id="textCursoIdP" name="textCursoIdP" class="form-control has-feedback-left" required>
+                                                        <select size="1" style="font-weight:normal;" id="textCurso_id" name="textCurso_id" class="form-control has-feedback-left" required>
                                                             <option>-</option>
                                                             <option value="1">Agile Coach</option>
                                                             <option value="2">Innovation Management</option>
@@ -361,7 +361,7 @@ require_once 'validar.datos.sesion.view.php';
                                                 <div class="col-xs-3">
                                                     <p>
                                                         Respuesta
-                                                        <select size="1" style="font-weight:normal;" id="txtPuntaje" name="txtPuntaje" class="form-control has-feedback-left" required>
+                                                        <select size="1" style="font-weight:normal;" id="txtRespuesta" name="txtRespuesta" class="form-control has-feedback-left" required>
                                                             <option>-</option>
                                                             <option value="a">a</option>
                                                             <option value="b">b</option>
@@ -375,7 +375,7 @@ require_once 'validar.datos.sesion.view.php';
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-warning" aria-hidden="true"><i class="fa fa-save"></i> Grabar</button>
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrarP"><i class="fa fa-close"></i> Cerrar</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrarPregunta"><i class="fa fa-close"></i> Cerrar</button>
                                         </div>
                                     </div>
                                 </div>

@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    cargarCbCodigoCursoPregunta("#textCursoIdP", "seleccione");
+    cargarCbCodigoCursoPregunta("#textCurso_id", "seleccione");
     listar();
     listarPregunta();
 });
@@ -267,6 +267,78 @@ $("#titulomodal").html("Agregar nueva prueba");
 
 $("#myModalPrueba").on("shown.bs.modal", function () {
    // $("#txtInstrucciones").focus();
+});
+
+
+$("#frmgrabarPregunta").submit(function (event) {
+    event.preventDefault();
+
+    swal({
+        title: "Confirme",
+        text: "¿Esta seguro de grabar los datos ingresados?",
+        showCancelButton: true,
+        confirmButtonColor: '#3d9205',
+        confirmButtonText: 'Si',
+        cancelButtonText: "No",
+        closeOnConfirm: false,
+        closeOnCancel: true,
+        imageUrl: "../images/pregunta.png"
+    },
+            function (isConfirm) {
+
+                if (isConfirm) { //el usuario hizo clic en el boton SI     
+                    //procedo a grabar
+                    //Llamar al controlador para grabar los datos
+
+                    //var codLab = ($("#txtTipoOperacion").val()==="agregar")? 
+
+                    var codPregunta = "";
+                    if ($("#txtTipoOperacionPregunta").val() === "agregar") {
+                        codPregunta = "0";
+                    } else {
+                        codPregunta = $("#txtPregunta_id").val();
+                    }
+                    $.post(
+                            "../controller/gestionarPregunta.agregar.editar.controller.php",
+                            {
+                                //p_pregunta_id: $("#txtPregunta_id").val(),
+                                p_curso_id: $("#textCurso_id").val(),
+                                p_descripcion: $("#editor1").val(),
+                                p_respuesta: $("#txtRespuesta").val(),                               
+                                
+                                p_tipo_ope: $("#txtTipoOperacionPregunta").val(),
+                                p_codigo_pregunta: codPregunta
+                            }
+                    ).done(function (resultado) {
+                        var datosJSON = resultado;
+
+                        if (datosJSON.estado === 200) {
+                            swal("Exito", datosJSON.mensaje, "success");
+                            $("#btncerrarPregunta").click(); //Cerrar la ventana 
+                            listarPregunta(); //actualizar la lista
+                        } else {
+                            swal("Mensaje del sistema", resultado, "warning");
+                        }
+
+                    }).fail(function (error) {
+                        var datosJSON = $.parseJSON(error.responseText);
+                        swal("Error", datosJSON.mensaje, "error");
+                    });
+
+                }
+            });
+
+});
+
+$("#btnagregarPregunta").click(function () {
+    $("#txtTipoOperacionPregunta").val("agregar");
+    $("#editor1").val(""),
+$("#titulomodal").html("Agregar nueva Pregunta");
+});
+
+
+$("#myModalPregunta").on("shown.bs.modal", function () {
+    $("#editor1").focus();
 });
 
 function leerDatos(codCurso) {
